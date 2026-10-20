@@ -176,3 +176,8 @@
 @media (prefers-color-scheme: light) {
   [data-design="a"] .brand--footer .brand__logo { mix-blend-mode: normal; }
 }
+
+/* Per-item Register link in event lists (template hook .event-item__register) */
+[data-design="a"] .event-item__actions { margin-top: var(--s-1); }
+
+[data-design="a"] .event-item__register { position: relative; z-index: 1; }

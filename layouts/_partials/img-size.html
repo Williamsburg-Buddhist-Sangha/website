@@ -1,0 +1,14 @@
+{{- /* Intrinsic size attributes for a local image, so the browser reserves its box before
+       the file loads (no layout shift). Context: the src as written in content/front matter
+       ("/images/x.jpg"). Returns ` width="W" height="H"`, or "" for remote/unknown images. */ -}}
+{{- $u := . | default "" | string -}}
+{{- $out := "" -}}
+{{- if and (hasPrefix $u "/") (not (hasPrefix $u "//")) -}}
+  {{- $p := path.Join "static" (strings.TrimPrefix "/" (index (split $u "?") 0)) -}}
+  {{- if and (os.FileExists $p) (in (slice ".jpg" ".jpeg" ".png" ".gif" ".webp") (lower (path.Ext $p))) -}}
+    {{- with images.Config $p -}}
+      {{- $out = printf ` width="%d" height="%d"` .Width .Height -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return ($out | safeHTMLAttr) -}}

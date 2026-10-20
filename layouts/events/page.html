@@ -14,7 +14,7 @@
   <div class="container event__layout">
     <div class="event__main">
       {{- if $isPast }}<p class="notice">This event has already taken place.</p>{{ end }}
-      {{- with .Params.image }}<figure class="event__image"><img src="{{ partial "url.html" . }}" alt="" decoding="async"></figure>{{ end }}
+      {{- with .Params.image }}<figure class="event__image"><img src="{{ partial "url.html" . }}"{{ partial "img-size.html" . }} alt="" decoding="async"></figure>{{ end }}
       {{- with .Params.summary }}<p class="event__summary">{{ . | markdownify }}</p>{{ end }}
       <div class="prose">{{ .Content }}</div>
     </div>

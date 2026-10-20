@@ -10,7 +10,7 @@
 
 <section class="hero{{ if .Params.hero_image }} hero--image{{ else }} hero--no-image{{ end }}" aria-labelledby="hero-title">
   {{- with .Params.hero_image }}
-  <div class="hero__media"><img src="{{ partial "url.html" . }}" alt="" fetchpriority="high" decoding="async"></div>
+  <div class="hero__media"><img src="{{ partial "url.html" . }}"{{ partial "img-size.html" . }} alt="" fetchpriority="high" decoding="async"></div>
   {{- end }}
   <div class="container hero__content">
     <p class="eyebrow hero__eyebrow">Williamsburg, Virginia</p>
@@ -34,7 +34,7 @@
     {{- with $featured }}
     <aside class="featured-event" aria-labelledby="featured-title">
       <p class="eyebrow">Next featured event</p>
-      {{- with .Params.image }}<img class="featured-event__img" src="{{ partial "url.html" . }}" alt="" loading="lazy" decoding="async">{{ end }}
+      {{- with .Params.image }}<img class="featured-event__img" src="{{ partial "url.html" . }}"{{ partial "img-size.html" . }} alt="" loading="lazy" decoding="async">{{ end }}
       <div class="featured-event__body">
         <div class="featured-event__head">
           <time class="date-badge" datetime="{{ .Date.Format "2006-01-02" }}"><span class="date-badge__month">{{ .Date.Format "Jan" }}</span><span class="date-badge__day">{{ .Date.Format "2" }}</span></time>
@@ -81,7 +81,7 @@
     <ul class="card-grid" role="list">
       {{- range . }}
       <li class="card{{ if .image }} card--image{{ end }}">
-        {{- with .image }}<img class="card__img" src="{{ partial "url.html" . }}" alt="" loading="lazy" decoding="async">{{ end }}
+        {{- with .image }}<img class="card__img" src="{{ partial "url.html" . }}"{{ partial "img-size.html" . }} alt="" loading="lazy" decoding="async">{{ end }}
         <div class="card__body">
           <h3 class="card__title"><a class="card__link" href="{{ partial "url.html" .link }}">{{ .title }}</a></h3>
           {{- with .text }}<p>{{ . | markdownify }}</p>{{ end }}

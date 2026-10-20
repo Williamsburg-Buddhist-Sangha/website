@@ -15,6 +15,9 @@
     </p>
     {{- if not .compact }}
       {{- with $p.Params.summary | default $p.Description }}<p class="event-item__summary">{{ . | markdownify }}</p>{{ end }}
+      {{- with $p.Params.register_url }}
+      <p class="event-item__actions"><a class="btn btn--primary btn--small event-item__register" href="{{ partial "url.html" . }}">Register<span class="visually-hidden"> for {{ $p.Title }}</span></a></p>
+      {{- end }}
     {{- end }}
   </div>
 </li>

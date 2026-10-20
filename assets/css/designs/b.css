@@ -246,3 +246,8 @@
 
 /* Prose column is centred in B, so wide blocks are centred too. */
 [data-design="b"] .wide { left: 50%; transform: translateX(-50%); }
+
+/* Per-item Register link in event lists (template hook .event-item__register) */
+[data-design="b"] .event-item__actions { margin-top: var(--s-1); }
+
+[data-design="b"] .event-item__register { position: relative; z-index: 1; }

@@ -20,6 +20,6 @@
 </header>
 {{- with $page.Params.hero_image }}
 <div class="container page-banner-wrap">
-  <figure class="page-banner"><img src="{{ partial "url.html" . }}" alt="" decoding="async"></figure>
+  <figure class="page-banner"><img src="{{ partial "url.html" . }}"{{ partial "img-size.html" . }} alt="" decoding="async"></figure>
 </div>
 {{- end }}

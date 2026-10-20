@@ -3,7 +3,7 @@
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
   {{- with .Get "link" }}<a href="{{ partial "url.html" . }}">{{ end -}}
   <img src="{{ partial "url.html" $src }}" alt="{{ .Get "alt" | default (.Get "caption" | plainify) }}" loading="lazy" decoding="async"
-    {{- with .Get "width" }} width="{{ . }}"{{ end }}{{ with .Get "height" }} height="{{ . }}"{{ end }}>
+    {{- if or (.Get "width") (.Get "height") }}{{ with .Get "width" }} width="{{ . }}"{{ end }}{{ with .Get "height" }} height="{{ . }}"{{ end }}{{ else }}{{ partial "img-size.html" $src }}{{ end }}>
   {{- if .Get "link" }}</a>{{ end -}}
   {{- with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
 </figure>

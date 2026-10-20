@@ -58,6 +58,10 @@ font fallback). Without `[[params.designs]]` the theme falls back to a single de
 - Fonts only via the registry `fonts` URL (Google Fonts). Always give a full system
   fallback stack in `--font-body` / `--font-heading`.
 - No JS. CSS only. Layout changes (grid → list, split hero, sidebar, etc.) are fine.
+- Local images (`/images/...` in content, front matter or data) get `width`/`height` attributes
+  from the file (`layouts/_partials/img-size.html`), so the browser reserves their box before
+  they load and lazy images no longer change the page height. Base sets `height: auto`; a
+  design that crops an image should set `aspect-ratio` or an explicit height.
 - Images may be missing (`hero_image`, event `image`, card `image`, person `photo` are all
   optional); designs must look complete without them.
 - The page must not scroll horizontally at 400 px.
@@ -164,7 +168,7 @@ is listed. `.container` = centred box `max-width: var(--wide)` with side gutters
 | Hook | Notes |
 |---|---|
 | `section.events-block` > `h2.section-title` + list | upcoming |
-| `ul.event-list` > `li.event-item` > `.date-badge`, `.event-item__body` > `h3.event-item__title` > `a` (stretched), `p.event-item__meta` > `span`×(1–3), `p.event-item__summary` | `.event-list--compact` / `.event-item--compact` for past events (no summary, badge shows year) |
+| `ul.event-list` > `li.event-item` > `.date-badge`, `.event-item__body` > `h3.event-item__title` > `a` (stretched), `p.event-item__meta` > `span`×(1–3), `p.event-item__summary`, `p.event-item__actions` > `a.event-item__register.btn.btn--primary.btn--small` | `.event-list--compact` / `.event-item--compact` for past events (no summary, no Register, badge shows year). The Register link renders only when the event has `register_url`; it carries a visually hidden "for <title>". The title link is stretched over the whole item, so give `.event-item__register` `position: relative; z-index: 1` (every design does) or it cannot be clicked. |
 | `section.events-block--past` > `details.past-events` > `summary` > `h2.section-title.section-title--small` > `span.count` | collapsed past events |
 | `.wide.events-embed` | wrapper when the list comes from the `events` shortcode |
 | `article.event` > `header.page-header` (`p.eyebrow` link, `h1.page-title`, `p.page-lede.event__when`) | single event |
