@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="{{ site.Language.LanguageCode | default "en" }}" data-design="{{ site.Params.defaultDesign | default "a" }}">
+<html lang="{{ site.Language.LanguageCode | default "en" }}" data-design="{{ (partial "designs.html" .).default }}">
 <head>
 {{ partial "head.html" . }}
 </head>
-<body class="{{ if .IsHome }}is-home{{ else }}is-{{ .Kind }}{{ end }}">
+<body class="{{ if .IsHome }}is-home{{ else }}is-{{ .Kind }}{{ end }}{{ with .Section }} section-{{ . }}{{ end }}{{ if and .File (not .IsHome) }} page-{{ .File.ContentBaseName | urlize }}{{ end }}">
 <a class="skip-link" href="#main">Skip to content</a>
 {{ partial "header.html" . }}
 <main id="main" tabindex="-1">

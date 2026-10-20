@@ -5,7 +5,7 @@ enableRobotsTXT = true
 buildFuture = true
 
 [params]
-  # Preview build: adds noindex and the A/B design switcher. Set false at cutover.
+  # Preview build: adds noindex and the design switcher. Set false at cutover.
   preview = true
   defaultDesign = 'a'
   description = 'The Williamsburg Buddhist Sangha offers meditation and study groups, special events, classes and a community for practice and learning in Williamsburg, Virginia.'
@@ -14,6 +14,18 @@ buildFuture = true
   address = 'WBS, Williamsburg Unitarian Universalists, 3051 Ironbound Road, Williamsburg, VA 23185'
   donateURL = 'https://wbs.breezechms.com/give/online'
   newsletterURL = 'https://williamsburgbuddhistsangha.us17.list-manage.com/subscribe?u=fc1ad0b20592452e7a0fbf777&id=4ef0d32acc'
+
+# Design variants (preview switcher order). Each needs assets/css/designs/<id>.css.
+# fonts: Google Fonts CSS URL loaded only while that design is active ('' = none).
+[[params.designs]]
+  id = 'a'
+  name = 'Refreshed'
+  fonts = 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap'
+
+[[params.designs]]
+  id = 'b'
+  name = 'Calm'
+  fonts = 'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap'
 
 [markup.goldmark.renderer]
   unsafe = true

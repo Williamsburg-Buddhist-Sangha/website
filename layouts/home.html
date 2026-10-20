@@ -8,7 +8,7 @@
 {{- $eventsHref := relURL "events/" }}
 {{- with site.GetPage "/events" }}{{ $eventsHref = .RelPermalink }}{{ end }}
 
-<section class="hero{{ if .Params.hero_image }} hero--image{{ end }}" aria-labelledby="hero-title">
+<section class="hero{{ if .Params.hero_image }} hero--image{{ else }} hero--no-image{{ end }}" aria-labelledby="hero-title">
   {{- with .Params.hero_image }}
   <div class="hero__media"><img src="{{ partial "url.html" . }}" alt="" fetchpriority="high" decoding="async"></div>
   {{- end }}

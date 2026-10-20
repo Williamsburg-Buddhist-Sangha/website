@@ -24,20 +24,30 @@
 <meta property="og:image" content="{{ partial "abs-url.html" . }}">
 <meta name="twitter:card" content="summary_large_image">
 {{- end }}
-{{- /* Design: apply stored/URL choice before first paint. */}}
-<script>
-(function(){var h=document.documentElement,d=h.getAttribute("data-design")||"a",k="wbs-design";h.className+=" js";
-{{- if site.Params.preview }}
-try{var s=localStorage.getItem(k);if(s==="a"||s==="b")d=s}catch(e){}
-try{var q=new URLSearchParams(location.search).get("design");if(q==="a"||q==="b"){d=q;try{localStorage.setItem(k,q)}catch(e){}}}catch(e){}
-{{- end }}
-h.setAttribute("data-design",d)})();
-</script>
-{{- /* Fonts: Lato (design A, current brand); Newsreader + Source Sans 3 (design B). */}}
+{{- /* Design: choose the design before first paint (default, then stored choice, then ?design=),
+       and load only that design's fonts. window.wbsSetDesign is reused by the switcher. */}}
+{{- $ds := partial "designs.html" . }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
-{{- $css := resources.Get "css/main.css" | minify | fingerprint }}
+<script>
+(function(){var h=document.documentElement,ids={{ $ds.ids | jsonify | safeJS }},F={{ $ds.fonts | jsonify | safeJS }},d={{ $ds.default }},k="wbs-design";
+h.className+=" js";
+function ok(x){return ids.indexOf(x)>-1}
+function font(x){var u=F[x];if(!u||document.getElementById("wbs-font-"+x))return;var l=document.createElement("link");l.rel="stylesheet";l.href=u;l.id="wbs-font-"+x;document.head.appendChild(l)}
+window.wbsSetDesign=function(x,save){if(!ok(x))return;h.setAttribute("data-design",x);font(x);if(save){try{localStorage.setItem(k,x)}catch(e){}}};
+{{- if site.Params.preview }}
+try{var s=localStorage.getItem(k);if(ok(s))d=s}catch(e){}
+try{var q=new URLSearchParams(location.search).get("design");if(ok(q)){d=q;try{localStorage.setItem(k,q)}catch(e){}}}catch(e){}
+{{- end }}
+window.wbsSetDesign(d)})();
+</script>
+{{- with index $ds.fonts $ds.default }}
+<noscript><link rel="stylesheet" href="{{ . }}"></noscript>
+{{- end }}
+{{- /* One stylesheet: structural base + every design file (each scoped to its own [data-design]). */}}
+{{- $parts := slice (resources.Get "css/base.css") }}
+{{- range resources.Match "css/designs/*.css" }}{{ $parts = $parts | append . }}{{ end }}
+{{- $css := $parts | resources.Concat "css/main.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{- $js := resources.Get "js/site.js" | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

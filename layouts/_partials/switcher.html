@@ -1,7 +1,21 @@
 {{- if site.Params.preview -}}
+{{- $ds := partial "designs.html" . -}}
+{{- if gt (len $ds.list) 1 -}}
 <div class="design-switcher" role="group" aria-labelledby="design-switcher-label" data-switcher>
   <span id="design-switcher-label" class="design-switcher__label">Preview <span aria-hidden="true">—</span> Design:</span>
-  <button type="button" data-design-choice="a" aria-pressed="false" title="A: Refreshed">A</button>
-  <button type="button" data-design-choice="b" aria-pressed="false" title="B: Calm">B</button>
+  <span class="design-switcher__buttons">
+    {{- range $ds.list }}
+    <button type="button" data-design-choice="{{ .id }}" aria-pressed="false" title="Design {{ upper .id }}: {{ .name }}"><span class="design-switcher__id">{{ upper .id }}</span>{{ with .name }}<span class="design-switcher__name"> {{ . }}</span>{{ end }}</button>
+    {{- end }}
+  </span>
+  <label class="design-switcher__select-wrap">
+    <span class="visually-hidden">Choose design</span>
+    <select class="design-switcher__select" data-design-select>
+      {{- range $ds.list }}
+      <option value="{{ .id }}">{{ upper .id }}{{ with .name }} — {{ . }}{{ end }}</option>
+      {{- end }}
+    </select>
+  </label>
 </div>
+{{- end -}}
 {{- end -}}

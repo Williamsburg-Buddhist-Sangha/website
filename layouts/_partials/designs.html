@@ -1,0 +1,12 @@
+{{- /* Design registry from hugo.toml [[params.designs]] (id, name, fonts).
+       Returns dict: list (slice of dicts), ids (slice), default (id), fonts (map id->url). */ -}}
+{{- $list := site.Params.designs | default (slice (dict "id" (site.Params.defaultDesign | default "a") "name" "Default" "fonts" "")) -}}
+{{- $ids := slice -}}
+{{- $fonts := dict -}}
+{{- range $list -}}
+  {{- $ids = $ids | append .id -}}
+  {{- $fonts = merge $fonts (dict .id (.fonts | default "")) -}}
+{{- end -}}
+{{- $def := site.Params.defaultDesign | default (index $ids 0) -}}
+{{- if not (in $ids $def) }}{{ $def = index $ids 0 }}{{ end -}}
+{{- return dict "list" $list "ids" $ids "default" $def "fonts" $fonts -}}

@@ -1,15 +1,15 @@
 {{- $info := partial "site-info.html" . -}}
 <footer class="site-footer">
   <div class="container site-footer__grid">
-    <div class="site-footer__about">
+    <div class="site-footer__col site-footer__about">
       <a class="brand brand--footer" href="{{ relURL "" }}">{{ partial "brand.html" . }}</a>
       <p>{{ $info.description }}</p>
     </div>
-    <div>
+    <div class="site-footer__col site-footer__visit">
       <h2 class="site-footer__heading">Visit</h2>
       <address class="site-footer__address">{{ replace (htmlEscape $info.address) "\n" "<br>" | safeHTML }}</address>
     </div>
-    <div>
+    <div class="site-footer__col site-footer__contact">
       <h2 class="site-footer__heading">Stay in touch</h2>
       <ul class="site-footer__list" role="list">
         <li><a href="mailto:{{ $info.email }}">{{ $info.email }}</a></li>
@@ -17,7 +17,7 @@
         {{- with $info.facebook }}<li><a href="{{ . }}" rel="noopener">Facebook</a></li>{{ end }}
       </ul>
     </div>
-    <nav aria-label="Footer">
+    <nav class="site-footer__col site-footer__explore" aria-label="Footer">
       <h2 class="site-footer__heading">Explore</h2>
       <ul class="site-footer__list" role="list">
         {{- range site.Menus.main }}

@@ -51,27 +51,31 @@
   });
 
   // Preview design switcher (only rendered when params.preview is true).
+  // window.wbsSetDesign is defined by the inline head script (validates ids, loads fonts).
   var sw = document.querySelector("[data-switcher]");
-  if (!sw) return;
+  if (!sw || !window.wbsSetDesign) return;
   var root = document.documentElement;
+  var select = sw.querySelector("[data-design-select]");
   function sync() {
     var d = root.getAttribute("data-design");
     sw.querySelectorAll("[data-design-choice]").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.getAttribute("data-design-choice") === d));
     });
+    if (select) select.value = d;
   }
-  sw.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-design-choice]");
-    if (!b) return;
-    var d = b.getAttribute("data-design-choice");
-    root.setAttribute("data-design", d);
-    try { localStorage.setItem("wbs-design", d); } catch (err) {}
+  function choose(d) {
+    window.wbsSetDesign(d, true);
     try {
       var u = new URL(location.href);
       u.searchParams.set("design", d);
       history.replaceState(null, "", u);
     } catch (err) {}
     sync();
+  }
+  sw.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-design-choice]");
+    if (b) choose(b.getAttribute("data-design-choice"));
   });
+  if (select) select.addEventListener("change", function () { choose(select.value); });
   sync();
 })();
