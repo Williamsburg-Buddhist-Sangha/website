@@ -8,4 +8,3 @@ menu:
     name: "Events"
     weight: 20
 ---
-{{< events >}}
