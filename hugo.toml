@@ -1,0 +1,20 @@
+baseURL = 'https://williamsburg-buddhist-sangha.github.io/website/'
+languageCode = 'en-us'
+title = 'Williamsburg Buddhist Sangha'
+enableRobotsTXT = true
+
+[params]
+  # Preview build: adds noindex and the A/B design switcher. Set false at cutover.
+  preview = true
+  defaultDesign = 'a'
+  description = ''
+  logo = ''
+  email = ''
+  address = ''
+  donateURL = ''
+  newsletterURL = ''
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
