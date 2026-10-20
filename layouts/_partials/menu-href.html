@@ -1,0 +1,3 @@
+{{- $h := .URL -}}
+{{- if not .Page }}{{ $h = partial "url.html" .URL }}{{ end -}}
+{{- return $h -}}

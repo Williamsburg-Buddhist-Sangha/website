@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{ partial "page-header.html" . }}
+<div class="container">
+  <div class="prose page-body">
+    {{ .Content }}
+  </div>
+  {{- with .Pages }}
+  <ul class="card-grid section-list" role="list">
+    {{- range . }}
+    <li class="card">
+      <div class="card__body">
+        <h2 class="card__title"><a class="card__link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{ with .Description | default .Summary }}<p>{{ . | plainify | truncate 160 }}</p>{{ end }}
+      </div>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</div>
+{{ end }}

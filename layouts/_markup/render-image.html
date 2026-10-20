@@ -1,0 +1,4 @@
+{{- $u := .Destination -}}
+{{- if hasPrefix $u "/" }}{{ $u = partial "url.html" $u }}{{ end -}}
+<img src="{{ $u | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- /**/ -}}

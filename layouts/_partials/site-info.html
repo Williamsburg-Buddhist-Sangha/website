@@ -1,0 +1,12 @@
+{{- /* Site contact info. Values come from hugo.toml [params]; fallbacks are the
+       details published on the current WordPress site (Contact page, 2026). */ -}}
+{{- $p := site.Params -}}
+{{- $info := dict
+  "email" ($p.email | default "contact@williamsburgbuddhistsangha.org")
+  "address" ($p.address | default "Williamsburg Unitarian Universalists\n3051 Ironbound Road\nWilliamsburg, VA 23185")
+  "facebook" ($p.facebook | default "https://www.facebook.com/williamsburgbuddhistsangha/")
+  "newsletter" ($p.newsletterURL | default "")
+  "description" ($p.description | default "A community for meditation and Buddhist practice in Williamsburg, Virginia.")
+  "donate" (cond (ne ($p.donateURL | default "") "") $p.donateURL "/support/")
+-}}
+{{- return $info -}}

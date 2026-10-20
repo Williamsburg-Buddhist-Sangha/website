@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{- $ev := partial "events-split.html" . }}
+{{- $isPast := in $ev.past . }}
+{{- $events := site.GetPage "/events" }}
+<article class="event">
+  <header class="page-header">
+    <div class="container page-header__inner">
+      <p class="eyebrow">{{ with $events }}<a href="{{ .RelPermalink }}">Events</a>{{ else }}Events{{ end }}</p>
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p class="page-lede event__when"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "event-when.html" . }}</time>{{ with .Params.time }} · {{ . }}{{ end }}</p>
+      <span class="ornament" aria-hidden="true"></span>
+    </div>
+  </header>
+  <div class="container event__layout">
+    <div class="event__main">
+      {{- if $isPast }}<p class="notice">This event has already taken place.</p>{{ end }}
+      {{- with .Params.image }}<figure class="event__image"><img src="{{ partial "url.html" . }}" alt="" decoding="async"></figure>{{ end }}
+      {{- with .Params.summary }}<p class="event__summary">{{ . | markdownify }}</p>{{ end }}
+      <div class="prose">{{ .Content }}</div>
+    </div>
+    <aside class="event__facts" aria-label="Event details">
+      <dl class="facts">
+        <div><dt>Date</dt><dd>{{ partial "event-when.html" . }}</dd></div>
+        {{- with .Params.time }}<div><dt>Time</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{- with .Params.location }}<div><dt>Location</dt><dd>{{ . }}{{ with $.Params.map_url }}<br><a href="{{ . }}" rel="noopener">View map</a>{{ end }}</dd></div>{{ end }}
+        {{- with .Params.teachers }}<div><dt>{{ if gt (len .) 1 }}Teachers{{ else }}Teacher{{ end }}</dt><dd>{{ delimit . ", " " & " }}</dd></div>{{ end }}
+      </dl>
+      {{- if and .Params.register_url (not $isPast) }}
+      <a class="btn btn--primary btn--block" href="{{ partial "url.html" .Params.register_url }}">Register</a>
+      {{- end }}
+    </aside>
+  </div>
+  <div class="container">
+    <p class="back-link">{{ with $events }}<a href="{{ .RelPermalink }}">← All events</a>{{ end }}</p>
+  </div>
+</article>
+{{ end }}

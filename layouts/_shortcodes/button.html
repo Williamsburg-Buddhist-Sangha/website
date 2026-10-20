@@ -1,0 +1,3 @@
+{{- $href := .Get "href" | default (.Get 0) -}}
+{{- $style := .Get "style" | default "primary" -}}
+<a class="btn btn--{{ $style }}" href="{{ partial "url.html" $href }}"{{ if hasPrefix $href "http" }} rel="noopener"{{ end }}>{{ .Inner | .Page.RenderString }}</a>

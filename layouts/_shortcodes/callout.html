@@ -1,0 +1,5 @@
+{{- $title := .Get "title" -}}
+<aside class="callout">
+  {{- with $title }}<p class="callout__title">{{ . }}</p>{{ end }}
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</aside>

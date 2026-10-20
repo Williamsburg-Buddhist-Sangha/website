@@ -1,0 +1,15 @@
+{{- /* Returns dict: upcoming (soonest first) and past (most recent first).
+       An event is upcoming while its end_date (or date) is today or later, at build time. */ -}}
+{{- $today := now.Format "2006-01-02" -}}
+{{- $up := slice -}}
+{{- $past := slice -}}
+{{- range where site.RegularPages "Section" "events" -}}
+  {{- $end := .Date -}}
+  {{- with .Params.end_date }}{{ $end = time.AsTime . }}{{ end -}}
+  {{- if ge ($end.Format "2006-01-02") $today -}}
+    {{- $up = $up | append . -}}
+  {{- else -}}
+    {{- $past = $past | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- return dict "upcoming" (sort $up "Date" "asc") "past" (sort $past "Date" "desc") -}}

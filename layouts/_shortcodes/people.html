@@ -1,0 +1,18 @@
+{{- $key := .Get 0 | default (.Get "group") | default "teachers" -}}
+{{- $people := index site.Data.people $key -}}
+{{- with $people }}
+<ul class="wide people" role="list">
+  {{- range . }}
+  <li class="person">
+    {{ partial "avatar.html" (dict "name" .name "photo" .photo "class" "person__photo") }}
+    <div class="person__body">
+      <h3 class="person__name">{{ .name }}</h3>
+      {{- with .role }}<p class="person__role">{{ . }}</p>{{ end }}
+      {{- with .bio }}<div class="person__bio">{{ . | $.Page.RenderString (dict "display" "block") }}</div>{{ end }}
+    </div>
+  </li>
+  {{- end }}
+</ul>
+{{- else }}
+{{- warnf "people shortcode: no entries for key %q in data/people.yaml (%s)" $key .Page.File.Path }}
+{{- end }}

@@ -1,0 +1,7 @@
+{{- if site.Params.preview -}}
+<div class="design-switcher" role="group" aria-labelledby="design-switcher-label" data-switcher>
+  <span id="design-switcher-label" class="design-switcher__label">Preview <span aria-hidden="true">—</span> Design:</span>
+  <button type="button" data-design-choice="a" aria-pressed="false" title="A: Refreshed">A</button>
+  <button type="button" data-design-choice="b" aria-pressed="false" title="B: Calm">B</button>
+</div>
+{{- end -}}

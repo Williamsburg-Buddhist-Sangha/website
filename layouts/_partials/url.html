@@ -1,0 +1,15 @@
+{{- /* Resolve a URL from content/front matter so it works under a subpath baseURL.
+       "/images/x.jpg" -> relURL "images/x.jpg"; absolute/external/anchor links pass through. */ -}}
+{{- $u := . | default "" | string -}}
+{{- $out := $u -}}
+{{- if or (hasPrefix $u "http://") (hasPrefix $u "https://") (hasPrefix $u "//") (hasPrefix $u "mailto:") (hasPrefix $u "tel:") (hasPrefix $u "#") -}}
+  {{- $out = $u -}}
+{{- else if hasPrefix $u "/" -}}
+  {{- $base := relURL "" -}}
+  {{- if and (ne $base "/") (hasPrefix $u $base) -}}
+    {{- $out = $u -}}
+  {{- else -}}
+    {{- $out = relURL (strings.TrimPrefix "/" $u) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

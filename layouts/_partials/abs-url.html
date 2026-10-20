@@ -1,0 +1,6 @@
+{{- $u := . | default "" | string -}}
+{{- $out := $u -}}
+{{- if not (or (hasPrefix $u "http://") (hasPrefix $u "https://")) -}}
+  {{- $out = absURL (strings.TrimPrefix "/" $u) -}}
+{{- end -}}
+{{- return $out -}}

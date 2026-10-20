@@ -1,0 +1,11 @@
+{{- /* Photo or initials avatar. Context: dict "name" "photo" "class" */ -}}
+{{- $name := .name | default "" -}}
+{{- with .photo -}}
+<img class="{{ $.class }}" src="{{ partial "url.html" . }}" alt="" loading="lazy" decoding="async" width="320" height="320">
+{{- else -}}
+{{- $words := split (trim $name " ") " " -}}
+{{- $ini := "" -}}
+{{- with index $words 0 }}{{ $ini = substr . 0 1 }}{{ end -}}
+{{- if gt (len $words) 1 }}{{ $ini = printf "%s%s" $ini (substr (index $words (sub (len $words) 1)) 0 1) }}{{ end -}}
+<span class="{{ $.class }} avatar-initials" aria-hidden="true" data-tone="{{ mod (len $name) 3 }}">{{ upper $ini }}</span>
+{{- end -}}

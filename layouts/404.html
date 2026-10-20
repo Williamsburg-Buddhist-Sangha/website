@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="notfound">
+  <div class="container notfound__inner">
+    <p class="eyebrow">Page not found</p>
+    <h1 class="page-title">This path leads nowhere</h1>
+    <p class="page-lede">The page you were looking for has moved or no longer exists. Our old WordPress addresses may have changed.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="{{ relURL "" }}">Go to the homepage</a>
+      {{- with site.GetPage "/meditation-groups" }}<a class="btn btn--ghost" href="{{ .RelPermalink }}">Meditation groups</a>{{ end }}
+      {{- with site.GetPage "/events" }}<a class="btn btn--ghost" href="{{ .RelPermalink }}">Events</a>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

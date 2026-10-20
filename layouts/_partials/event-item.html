@@ -1,0 +1,20 @@
+{{- /* One event in a list. Context: dict "page" . "compact" bool */ -}}
+{{- $p := .page -}}
+<li class="event-item{{ if .compact }} event-item--compact{{ end }}">
+  <time class="date-badge" datetime="{{ $p.Date.Format "2006-01-02" }}">
+    <span class="date-badge__month">{{ $p.Date.Format "Jan" }}</span>
+    <span class="date-badge__day">{{ $p.Date.Format "2" }}</span>
+    {{- if .compact }}<span class="date-badge__year">{{ $p.Date.Format "2006" }}</span>{{ end }}
+  </time>
+  <div class="event-item__body">
+    <h3 class="event-item__title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+    <p class="event-item__meta">
+      <span>{{ partial "event-when.html" $p }}</span>
+      {{- with $p.Params.time }}<span>{{ . }}</span>{{ end -}}
+      {{- with $p.Params.location }}<span>{{ . }}</span>{{ end -}}
+    </p>
+    {{- if not .compact }}
+      {{- with $p.Params.summary | default $p.Description }}<p class="event-item__summary">{{ . | markdownify }}</p>{{ end }}
+    {{- end }}
+  </div>
+</li>

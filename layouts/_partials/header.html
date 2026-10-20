@@ -1,0 +1,36 @@
+{{- $info := partial "site-info.html" . -}}
+{{- $page := . -}}
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ relURL "" }}" rel="home">{{ partial "brand.html" . }}</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span class="nav-toggle__label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul class="menu" role="list">
+        {{- range site.Menus.main }}
+        {{- $href := partial "menu-href.html" . }}
+        {{- $active := or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }}
+        {{- if .HasChildren }}
+        <li class="menu__item has-sub{{ if $active }} is-active{{ end }}" data-sub>
+          <a class="menu__link" href="{{ $href }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
+          <button class="sub-toggle" type="button" aria-expanded="false" aria-label="{{ .Name }} submenu" data-sub-toggle>
+            <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="submenu" role="list">
+            {{- range .Children }}
+            {{- $ch := partial "menu-href.html" . }}
+            <li><a href="{{ $ch }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+            {{- end }}
+          </ul>
+        </li>
+        {{- else }}
+        <li class="menu__item{{ if $active }} is-active{{ end }}"><a class="menu__link" href="{{ $href }}"{{ if $page.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+        {{- end }}
+      </ul>
+      <a class="btn btn--accent btn--small site-nav__cta" href="{{ partial "url.html" $info.donate }}">Donate</a>
+    </nav>
+  </div>
+</header>

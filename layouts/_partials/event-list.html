@@ -1,0 +1,9 @@
+{{- /* Upcoming events list, used by the events section page and the events shortcode. */ -}}
+{{- $ev := partial "events-split.html" . -}}
+{{- with $ev.upcoming -}}
+<ul class="event-list" role="list">
+  {{- range . }}{{ partial "event-item.html" (dict "page" . "compact" false) }}{{ end }}
+</ul>
+{{- else -}}
+<p class="empty-note">No upcoming events are scheduled right now. Please check back soon, or join one of our weekly meditation groups.</p>
+{{- end -}}

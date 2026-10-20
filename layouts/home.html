@@ -1,0 +1,109 @@
+{{ define "main" }}
+{{- $ev := partial "events-split.html" . }}
+{{- $featured := false }}
+{{- range first 1 (where $ev.upcoming "Params.featured" true) }}{{ $featured = . }}{{ end }}
+{{- $groupsPage := site.GetPage "/meditation-groups" }}
+{{- $groupsHref := "" }}
+{{- with $groupsPage }}{{ $groupsHref = .RelPermalink }}{{ else }}{{ $groupsHref = relURL "meditation-groups/" }}{{ end }}
+{{- $eventsHref := relURL "events/" }}
+{{- with site.GetPage "/events" }}{{ $eventsHref = .RelPermalink }}{{ end }}
+
+<section class="hero{{ if .Params.hero_image }} hero--image{{ end }}" aria-labelledby="hero-title">
+  {{- with .Params.hero_image }}
+  <div class="hero__media"><img src="{{ partial "url.html" . }}" alt="" fetchpriority="high" decoding="async"></div>
+  {{- end }}
+  <div class="container hero__content">
+    <p class="eyebrow hero__eyebrow">Williamsburg, Virginia</p>
+    <h1 id="hero-title" class="hero__title">{{ .Title | default site.Title }}</h1>
+    {{- with .Params.tagline }}<p class="hero__tagline">{{ . }}</p>{{ end }}
+    <div class="btn-row">
+      <a class="btn btn--primary btn--large" href="{{ $groupsHref }}">Join us for meditation</a>
+      <a class="btn btn--ghost btn--large hero__secondary" href="{{ $eventsHref }}">Upcoming events</a>
+    </div>
+  </div>
+</section>
+
+<section class="section welcome" aria-label="Welcome">
+  <div class="container welcome__grid{{ if not $featured }} welcome__grid--single{{ end }}">
+    <div class="prose welcome__text">
+      {{- if not (hasPrefix (trim .RawContent " \n\r\t") "#") }}
+      <h2 class="section-title">Welcome</h2>
+      {{- end }}
+      {{ .Content }}
+    </div>
+    {{- with $featured }}
+    <aside class="featured-event" aria-labelledby="featured-title">
+      <p class="eyebrow">Next featured event</p>
+      {{- with .Params.image }}<img class="featured-event__img" src="{{ partial "url.html" . }}" alt="" loading="lazy" decoding="async">{{ end }}
+      <div class="featured-event__body">
+        <div class="featured-event__head">
+          <time class="date-badge" datetime="{{ .Date.Format "2006-01-02" }}"><span class="date-badge__month">{{ .Date.Format "Jan" }}</span><span class="date-badge__day">{{ .Date.Format "2" }}</span></time>
+          <h3 id="featured-title" class="featured-event__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        </div>
+        <p class="featured-event__meta">{{ partial "event-when.html" . }}{{ with .Params.time }}<br>{{ . }}{{ end }}{{ with .Params.location }}<br>{{ . }}{{ end }}</p>
+        {{- with .Params.summary }}<p class="featured-event__summary">{{ . | markdownify }}</p>{{ end }}
+        <div class="btn-row">
+          {{- with .Params.register_url }}<a class="btn btn--primary btn--small" href="{{ partial "url.html" . }}">Register</a>{{ end }}
+          <a class="btn btn--ghost btn--small" href="{{ .RelPermalink }}">Details<span class="visually-hidden"> about {{ .Title }}</span></a>
+        </div>
+      </div>
+    </aside>
+    {{- end }}
+  </div>
+</section>
+
+{{- with site.Data.groups.groups }}
+<section class="section practice" aria-labelledby="practice-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Weekly practice</p>
+      <h2 id="practice-title" class="section-title">Sit with us</h2>
+      <p class="section-lede">Our groups are free and open to everyone, from first-timers to long-time practitioners. Just come.</p>
+    </div>
+    <ul class="practice-list" role="list">
+      {{- range . }}
+      <li class="practice-item">
+        <p class="practice-item__day">{{ .day }}</p>
+        <h3 class="practice-item__name"><a href="{{ $groupsHref }}#{{ anchorize .name }}">{{ .name }}</a></h3>
+        <p class="practice-item__meta">{{ .time }}{{ with .location }}<br>{{ . }}{{ end }}</p>
+      </li>
+      {{- end }}
+    </ul>
+    <p class="practice__more"><a class="btn btn--primary" href="{{ $groupsHref }}">Schedules &amp; teachers</a></p>
+  </div>
+</section>
+{{- end }}
+
+{{- with site.Data.home.cards }}
+<section class="section cards" aria-labelledby="cards-title">
+  <div class="container">
+    <h2 id="cards-title" class="section-title visually-hidden">Explore the sangha</h2>
+    <ul class="card-grid" role="list">
+      {{- range . }}
+      <li class="card{{ if .image }} card--image{{ end }}">
+        {{- with .image }}<img class="card__img" src="{{ partial "url.html" . }}" alt="" loading="lazy" decoding="async">{{ end }}
+        <div class="card__body">
+          <h3 class="card__title"><a class="card__link" href="{{ partial "url.html" .link }}">{{ .title }}</a></h3>
+          {{- with .text }}<p>{{ . | markdownify }}</p>{{ end }}
+          <span class="card__arrow" aria-hidden="true">→</span>
+        </div>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{- end }}
+
+{{- $info := partial "site-info.html" . }}
+{{- with $info.newsletter }}
+<section class="section newsletter" aria-labelledby="nl-title">
+  <div class="container"><div class="newsletter__inner">
+    <div>
+      <h2 id="nl-title" class="section-title">Our monthly newsletter</h2>
+      <p>Buddhism, meditation practices, and sangha news, once a month in your inbox.</p>
+    </div>
+    <a class="btn btn--accent btn--large" href="{{ partial "url.html" . }}">Subscribe</a>
+  </div></div>
+</section>
+{{- end }}
+{{ end }}

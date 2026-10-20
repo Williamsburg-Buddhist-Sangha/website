@@ -1,0 +1,9 @@
+{{- /* Overrides Hugo's built-in figure so root-relative src works under a subpath baseURL. */ -}}
+{{- $src := .Get "src" -}}
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{- with .Get "link" }}<a href="{{ partial "url.html" . }}">{{ end -}}
+  <img src="{{ partial "url.html" $src }}" alt="{{ .Get "alt" | default (.Get "caption" | plainify) }}" loading="lazy" decoding="async"
+    {{- with .Get "width" }} width="{{ . }}"{{ end }}{{ with .Get "height" }} height="{{ . }}"{{ end }}>
+  {{- if .Get "link" }}</a>{{ end -}}
+  {{- with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>

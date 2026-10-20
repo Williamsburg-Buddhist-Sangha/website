@@ -1,0 +1,6 @@
+{{- with site.Params.logo -}}
+<img class="brand__logo" src="{{ partial "url.html" . }}" alt="{{ site.Title }}" width="260" height="50">
+{{- else -}}
+<svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M30 40h4v18h-4z" fill="currentColor" opacity=".55"/><circle cx="32" cy="24" r="16" fill="currentColor"/><circle cx="19" cy="34" r="10" fill="currentColor" opacity=".8"/><circle cx="45" cy="34" r="10" fill="currentColor" opacity=".8"/></svg>
+<span class="brand__text"><span class="brand__line1">Williamsburg</span> <span class="brand__line2">Buddhist Sangha</span></span>
+{{- end -}}

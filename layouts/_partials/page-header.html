@@ -1,0 +1,25 @@
+{{- /* Title band for inner pages. Shows the parent menu entry as an eyebrow for About Us children. */ -}}
+{{- $page := . -}}
+{{- $parent := "" -}}
+{{- range site.Menus.main -}}
+  {{- $top := . -}}
+  {{- range .Children -}}
+    {{- if and .Page (eq .Page $page) }}{{ $parent = $top }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+<header class="page-header">
+  <div class="container page-header__inner">
+    {{- with $parent }}
+    <p class="eyebrow"><a href="{{ partial "menu-href.html" . }}">{{ .Name }}</a></p>
+    {{- else }}{{ with $page.Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+    {{- end }}
+    <h1 class="page-title">{{ $page.Title }}</h1>
+    {{- with $page.Description }}<p class="page-lede">{{ . }}</p>{{ end }}
+    <span class="ornament" aria-hidden="true"></span>
+  </div>
+</header>
+{{- with $page.Params.hero_image }}
+<div class="container page-banner-wrap">
+  <figure class="page-banner"><img src="{{ partial "url.html" . }}" alt="" decoding="async"></figure>
+</div>
+{{- end }}

@@ -1,0 +1,14 @@
+{{- /* Human date line for an event page: "Sunday, November 8, 2026" or a range. */ -}}
+{{- $start := .Date -}}
+{{- $s := $start.Format "Monday, January 2, 2006" -}}
+{{- with .Params.end_date -}}
+  {{- $end := time.AsTime . -}}
+  {{- if ne ($end.Format "2006-01-02") ($start.Format "2006-01-02") -}}
+    {{- if eq $end.Month $start.Month -}}
+      {{- $s = printf "%s – %s" ($start.Format "Monday, January 2") ($end.Format "Monday, January 2, 2006") -}}
+    {{- else -}}
+      {{- $s = printf "%s – %s" ($start.Format "Mon, Jan 2") ($end.Format "Mon, Jan 2, 2006") -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $s -}}

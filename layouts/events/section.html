@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ partial "page-header.html" . }}
+{{- $ev := partial "events-split.html" . }}
+<div class="container">
+  {{- with .Content }}<div class="prose page-body">{{ . }}</div>{{ end }}
+  <section class="events-block" aria-labelledby="upcoming-h">
+    <h2 id="upcoming-h" class="section-title">Upcoming events</h2>
+    {{ partial "event-list.html" . }}
+  </section>
+  {{- with $ev.past }}
+  <section class="events-block events-block--past" aria-labelledby="past-h">
+    <details class="past-events">
+      <summary><h2 id="past-h" class="section-title section-title--small">Past events <span class="count">({{ len . }})</span></h2></summary>
+      <ul class="event-list event-list--compact" role="list">
+        {{- range . }}{{ partial "event-item.html" (dict "page" . "compact" true) }}{{ end }}
+      </ul>
+    </details>
+  </section>
+  {{- end }}
+</div>
+{{ end }}
