@@ -1,0 +1,15 @@
+cards:
+  - title: "Meditation Groups"
+    text: "Five meditation and study groups every week, in person and on Zoom. No prior training needed."
+    link: /meditation-groups/
+    image: /images/walking-meditation.jpg
+  - title: "Events"
+    text: "Daylong meditations, courses such as Introduction to Buddhism, and other special events."
+    link: /events/
+  - title: "Membership"
+    text: "Membership is open to anyone who supports our mission and values."
+    link: /membership/
+  - title: "Support"
+    text: "The WBS is supported entirely by dana, free will contributions by members and others."
+    link: /support/
+    image: /images/dana.jpg

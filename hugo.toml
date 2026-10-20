@@ -7,12 +7,12 @@ enableRobotsTXT = true
   # Preview build: adds noindex and the A/B design switcher. Set false at cutover.
   preview = true
   defaultDesign = 'a'
-  description = ''
-  logo = ''
-  email = ''
-  address = ''
-  donateURL = ''
-  newsletterURL = ''
+  description = 'The Williamsburg Buddhist Sangha offers meditation and study groups, special events, classes and a community for practice and learning in Williamsburg, Virginia.'
+  logo = '/images/logo.png'
+  email = 'contact@williamsburgbuddhistsangha.org'
+  address = 'WBS, Williamsburg Unitarian Universalists, 3051 Ironbound Road, Williamsburg, VA 23185'
+  donateURL = 'https://wbs.breezechms.com/give/online'
+  newsletterURL = 'https://williamsburgbuddhistsangha.us17.list-manage.com/subscribe?u=fc1ad0b20592452e7a0fbf777&id=4ef0d32acc'
 
 [markup.goldmark.renderer]
   unsafe = true
