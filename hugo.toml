@@ -2,6 +2,7 @@ baseURL = 'https://williamsburg-buddhist-sangha.github.io/website/'
 languageCode = 'en-us'
 title = 'Williamsburg Buddhist Sangha'
 enableRobotsTXT = true
+buildFuture = true
 
 [params]
   # Preview build: adds noindex and the A/B design switcher. Set false at cutover.
