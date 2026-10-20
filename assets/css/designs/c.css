@@ -65,7 +65,7 @@
   --shadow-hover: none;
   --section-pad: clamp(3.5rem, 8vw, 6rem);
   --nav-weight: 500;
-  --nav-size: 1rem;
+  --nav-size: 1.0625rem;
   --nav-transform: none;
   --nav-tracking: 0;
 
@@ -155,13 +155,13 @@
 [data-design="c"] .btn {
   font-family: var(--font-ui);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   letter-spacing: .005em;
   min-height: 2.75rem;
   border-width: 1px;
 }
 
-[data-design="c"] .btn--small { min-height: 2.75rem; font-size: .975rem; padding: .45rem 1rem; }
+[data-design="c"] .btn--small { min-height: 2.75rem; font-size: 1.0625rem; padding: .45rem 1rem; }
 
 [data-design="c"] .btn--large { min-height: 3rem; font-size: 1.0625rem; padding: .7rem 1.4rem; }
 
@@ -204,7 +204,7 @@
   border: 1px solid var(--text);
   border-radius: var(--btn-radius);
   background: transparent;
-  font: 600 1rem/1 var(--font-ui);
+  font: 600 1.0625rem/1 var(--font-ui);
   padding: .4rem .9rem;
 }
 
@@ -246,7 +246,7 @@
   }
   [data-design="c"] .menu__link:hover { color: var(--link); text-decoration: underline; text-underline-offset: .35em; }
   [data-design="c"] .has-sub .menu__link { padding-right: .1rem; }
-  [data-design="c"] .sub-toggle { width: 2rem; height: 2.75rem; }
+  [data-design="c"] .sub-toggle { width: 2.75rem; height: 2.75rem; margin-left: -.35rem; }
   [data-design="c"] .submenu {
     border: 1px solid var(--rule);
     background: var(--bg);
@@ -254,7 +254,7 @@
     padding: var(--s-2) 0;
     min-width: 17rem;
   }
-  [data-design="c"] .submenu a { font-size: 1rem; padding: .55rem 1rem; display: flex; align-items: center; }
+  [data-design="c"] .submenu a { font-size: 1.0625rem; padding: .55rem 1rem; display: flex; align-items: center; }
   [data-design="c"] .submenu a:hover { background: var(--surface-2); text-decoration: underline; }
   [data-design="c"] .site-nav__cta { margin-left: var(--s0); }
 }
@@ -305,9 +305,9 @@
 
 [data-design="c"] .hero__media img {
   width: 100%;
-  aspect-ratio: 1600 / 595;
+  aspect-ratio: 9 / 4;            /* narrower than the 1600×595 source: crops its pale left edge */
   object-fit: cover;
-  object-position: 70% 30%;
+  object-position: 100% 30%;
 }
 
 @media (max-width: 40em) {
@@ -411,7 +411,7 @@
 
 [data-design="c"] .date-badge__year {
   order: 2;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   color: var(--muted);
   margin-top: .1rem;
 }
@@ -694,7 +694,7 @@
   font-family: var(--font-heading);
   font-style: italic;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   letter-spacing: 0;
   text-transform: none;
   color: var(--muted);
@@ -719,7 +719,7 @@
   border-radius: 0;
   font-family: var(--font-heading);
   font-style: italic;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
@@ -847,7 +847,7 @@
 
 [data-design="c"] .avatar-initials { font-size: 2rem; font-weight: 400; font-style: italic; }
 
-[data-design="c"] .person__name { font-size: clamp(1.4rem, 1.25rem + .5vw, 1.65rem); }
+[data-design="c"] .person__name { font-size: clamp(1.4rem, 1.25rem + .5vw, 1.65rem); margin-top: 0; line-height: 1.15; }
 
 [data-design="c"] .person__role {
   margin-top: .1rem;
@@ -860,7 +860,7 @@
   color: var(--accent);
 }
 
-[data-design="c"] .person__bio { margin-top: var(--s0); color: var(--text); font-size: 1.125rem; line-height: 1.6; max-width: 38rem; }
+[data-design="c"] .person__bio { margin-top: var(--s0); color: var(--text); font-size: inherit; line-height: var(--line); max-width: var(--col); }
 
 @media (min-width: 62em) {
   /* photos hang in the margin; names and bios align with the reading column */
@@ -898,9 +898,11 @@
   margin-bottom: var(--s-2);
 }
 
-[data-design="c"] .site-footer__list { gap: .15rem; }
+[data-design="c"] .site-footer__list { gap: 0; }
 
-[data-design="c"] .site-footer__list a { display: inline-block; padding-block: .3rem; }
+[data-design="c"] .site-footer__list { margin-top: calc((1lh - 2.75rem) / 2); }
+
+[data-design="c"] .site-footer__list a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
 [data-design="c"] .site-footer__bottom { font-size: 1rem; }
 
@@ -909,3 +911,77 @@
 /* ---------- 404 ----------------------------------------------------------- */
 
 [data-design="c"] .notfound__inner { max-width: calc(var(--col) + 2 * var(--gutter)); }
+
+/* ---------- Art-director pass ------------------------------------------- */
+
+/* Even line endings: no widows in facts, ledes, meta or the footer */
+[data-design="c"] :is(p, li, dd, address, .page-lede) { text-wrap: pretty; }
+
+[data-design="c"] :is(h1, h2, h3) { text-wrap: balance; }
+
+/* Parent link above page titles: a 44 px target without moving the title */
+[data-design="c"] .page-header .eyebrow a { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block: calc((1lh - 2.75rem) / 2); }
+
+/* Names sit level with the top of the portrait (prose h3 margin no longer applies) */
+[data-design="c"] .prose .person__name { margin-top: 0; }
+
+/* Past events: chevron centred on the heading */
+[data-design="c"] .past-events summary .section-title { margin: 0; line-height: 1.2; }
+
+[data-design="c"] .past-events summary::before { align-self: center; margin-top: -.15rem; }
+
+/* Register link in event lists */
+[data-design="c"] .event-item__actions { margin-top: var(--s0); }
+
+[data-design="c"] .event-item__register { position: relative; z-index: 1; }
+
+/* Single event: same centred reading column as every other page. The facts follow the
+   standfirst as a ruled list, so Register sits near the top instead of in a sidebar. */
+[data-design="c"] .event .page-header__inner { max-width: calc(var(--col) + 2 * var(--gutter)); }
+
+[data-design="c"] .event .page-title { max-width: none; }
+
+[data-design="c"] .event__layout { max-width: calc(var(--col) + 2 * var(--gutter)); display: flex; flex-direction: column; gap: 0; }
+
+[data-design="c"] .event__main { display: contents; }
+
+[data-design="c"] .event__main > .notice { order: 1; margin-bottom: var(--s1); }
+
+[data-design="c"] .event__image { order: 2; margin-bottom: var(--s1); }
+
+[data-design="c"] .event__summary { order: 3; }
+
+[data-design="c"] .event__facts { order: 4; position: static; margin-block: var(--s2); }
+
+[data-design="c"] .event__facts .facts > div { grid-template-columns: 6rem minmax(0, 1fr); }
+
+[data-design="c"] .event__facts .btn { width: auto; justify-self: start; padding-inline: 2rem; }
+
+[data-design="c"] .event__main > .prose { order: 5; }
+
+/* Footer: room for the e-mail address on one line */
+@media (min-width: 62em) {
+  [data-design="c"] .site-footer__grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.45fr) minmax(0, .9fr); }
+}
+
+/* Mobile: close the gap between the hero photo and the welcome text */
+@media (max-width: 40em) {
+  [data-design="c"] .hero + .welcome { padding-top: var(--s2); }
+}
+
+[data-design="c"] .event > .container:last-child { max-width: calc(var(--col) + 2 * var(--gutter)); }
+
+/* 44 px targets for the featured-event title and the back link, without changing rhythm */
+[data-design="c"] :is(.featured-event__title a, .back-link a) { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block: calc((1lh - 2.75rem) / 2); }
+
+/* Desktop nav never wraps a label; tighter spacing on narrow desktops */
+@media (min-width: 62em) {
+  [data-design="c"] .menu__link { white-space: nowrap; }
+}
+
+@media (min-width: 62em) and (max-width: 74.99em) {
+  [data-design="c"] .menu__link { padding-inline: .4rem; }
+  [data-design="c"] .has-sub .menu__link { padding-right: 0; }
+  [data-design="c"] .site-header .brand__logo { height: 2.75rem; }
+  [data-design="c"] .site-nav__cta { margin-left: .5rem; }
+}

@@ -172,7 +172,7 @@
   [data-design="f"] .menu__link[aria-current="page"],
   [data-design="f"] .is-active > .menu__link { color: var(--heading); text-decoration: underline; text-decoration-color: var(--primary); text-decoration-thickness: 2px; text-underline-offset: .4em; }
   [data-design="f"] .has-sub .menu__link { padding-right: 0; }
-  [data-design="f"] .sub-toggle { width: 2.25rem; height: 2.75rem; }
+  [data-design="f"] .sub-toggle { width: 2.75rem; height: 2.75rem; margin-left: -.3rem; }
   [data-design="f"] .submenu { top: 100%; padding: .4rem; border-color: var(--border); background: var(--bg); }
   [data-design="f"] .submenu a { padding: .6rem .8rem; font-size: 1.0625rem; color: var(--text); }
   [data-design="f"] .submenu a[aria-current="page"] { color: var(--link); text-decoration: underline; text-underline-offset: .25em; }
@@ -255,13 +255,13 @@
 
 [data-design="f"] .featured-event__title { font-size: clamp(1.6rem, 1.4rem + .6vw, 1.9rem); line-height: 1.12; padding-top: .3rem; }
 
-[data-design="f"] .featured-event__title a { color: var(--heading); text-decoration: underline; text-decoration-color: var(--border); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+[data-design="f"] .featured-event__title a { color: var(--link); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); text-decoration-thickness: 1px; text-underline-offset: .18em; }
 
 [data-design="f"] .featured-event__title a:hover { text-decoration-color: currentColor; }
 
-[data-design="f"] .featured-event__meta { font-size: 1.125rem; color: var(--text); line-height: 1.6; }
+[data-design="f"] .featured-event__meta { font-size: 1.1875rem; color: var(--text); line-height: 1.6; }
 
-[data-design="f"] .featured-event__summary { font-size: 1.125rem; color: var(--muted); }
+[data-design="f"] .featured-event__summary { font-size: 1.1875rem; color: var(--muted); }
 
 [data-design="f"] .featured-event .btn-row { margin-top: var(--s1); gap: var(--s0); }
 
@@ -272,7 +272,7 @@
 
 [data-design="f"] .date-badge__day { font-size: 2.6rem; font-weight: 500; margin-top: .05rem; line-height: .95; font-variant-numeric: lining-nums; }
 
-[data-design="f"] .date-badge__year { font-size: 1rem; color: var(--muted); margin-top: .25rem; }
+[data-design="f"] .date-badge__year { font-size: 1.0625rem; color: var(--muted); margin-top: .25rem; }
 
 /* Weekly practice: a full-width paper-tint band with a plain schedule list. */
 [data-design="f"] .practice { background: var(--surface-2); }
@@ -285,7 +285,7 @@
 
 [data-design="f"] .practice-item__name { margin: 0; font-size: clamp(1.4rem, 1.25rem + .5vw, 1.65rem); line-height: 1.2; }
 
-[data-design="f"] .practice-item__name a { color: var(--heading); text-decoration: underline; text-decoration-color: var(--border); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+[data-design="f"] .practice-item__name a { color: var(--link); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); text-decoration-thickness: 1px; text-underline-offset: .2em; }
 
 [data-design="f"] .practice-item:hover .practice-item__name a { text-decoration-color: currentColor; }
 
@@ -293,7 +293,7 @@
 
 [data-design="f"] .practice-item:has(a:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 
-[data-design="f"] .practice-item__meta { margin: 0; font-size: 1.125rem; color: var(--text); line-height: 1.5; }
+[data-design="f"] .practice-item__meta { margin: 0; font-size: 1.1875rem; color: var(--text); line-height: 1.5; }
 
 @media (min-width: 56em) {
   [data-design="f"] .practice-item { grid-template-columns: 8rem minmax(0, 1.1fr) minmax(0, 1fr); align-items: baseline; }
@@ -317,11 +317,11 @@
 
 [data-design="f"] .card__title { font-size: 1.6rem; }
 
-[data-design="f"] .card__link { color: var(--heading); text-decoration: underline; text-decoration-color: var(--border); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+[data-design="f"] .card__link { color: var(--link); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); text-decoration-thickness: 1px; text-underline-offset: .2em; }
 
 [data-design="f"] .card:hover .card__link { text-decoration-color: currentColor; }
 
-[data-design="f"] .card p { font-size: 1.125rem; color: var(--text); }
+[data-design="f"] .card p { font-size: 1.1875rem; color: var(--text); }
 
 [data-design="f"] .card__arrow { display: none; }
 
@@ -377,7 +377,7 @@
 
 [data-design="f"] .facts dt { font-size: 1.0625rem; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--heading); padding-top: .1rem; }
 
-[data-design="f"] .facts dd { font-size: 1.125rem; }
+[data-design="f"] .facts dd { font-size: 1.1875rem; }
 
 /* ---------- Meditation groups ------------------------------------------- */
 
@@ -399,7 +399,7 @@
 
 [data-design="f"] .roster caption { font-size: 1.4rem; font-weight: 500; padding-bottom: var(--s-1); }
 
-[data-design="f"] .roster th { font-size: 1rem; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--muted); padding: .5rem .75rem; border-bottom: 1px solid var(--muted); }
+[data-design="f"] .roster th { font-size: 1.0625rem; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--muted); padding: .5rem .75rem; border-bottom: 1px solid var(--muted); }
 
 [data-design="f"] .roster td { padding: .7rem .75rem; }
 
@@ -407,9 +407,9 @@
 
 [data-design="f"] .roster td:first-child { font-weight: 600; }
 
-[data-design="f"] .roster tr.is-next td { background: var(--tag-bg); color: var(--tag-fg); }
+[data-design="f"] .roster tr.is-next td { background: transparent; color: var(--heading); font-weight: 600; border-bottom-color: var(--primary); }
 
-[data-design="f"] .tag { padding: .05rem .5rem; border-radius: 2px; background: var(--primary); color: var(--on-primary); font-size: .9375rem; font-weight: 600; letter-spacing: .01em; text-transform: none; }
+[data-design="f"] .tag { padding: 0; margin-left: .4rem; border-radius: 0; background: transparent; color: var(--link); font-family: var(--font-heading); font-style: italic; font-size: 1.1875rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
 
 /* ---------- Events ------------------------------------------------------- */
 
@@ -421,7 +421,7 @@
 
 [data-design="f"] .event-item__title { font-size: clamp(1.5rem, 1.35rem + .5vw, 1.75rem); padding-top: .25rem; }
 
-[data-design="f"] .event-item__title a { color: var(--heading); text-decoration: underline; text-decoration-color: var(--border); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+[data-design="f"] .event-item__title a { color: var(--link); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); text-decoration-thickness: 1px; text-underline-offset: .18em; }
 
 [data-design="f"] .event-item:hover .event-item__title a { text-decoration-color: currentColor; }
 
@@ -430,13 +430,13 @@
 [data-design="f"] .event-item:has(a:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* Meta as a short stacked details list: date / time / place, one per line. */
-[data-design="f"] .event-item__meta { display: block; margin-top: var(--s-2); font-size: 1.125rem; line-height: 1.5; color: var(--text); }
+[data-design="f"] .event-item__meta { display: block; margin-top: var(--s-2); font-size: 1.1875rem; line-height: 1.5; color: var(--text); }
 
 [data-design="f"] .event-item__meta span { display: block; }
 
 [data-design="f"] .event-item__meta span + span::before { content: none; }
 
-[data-design="f"] .event-item__summary { margin-top: var(--s-2); font-size: 1.125rem; color: var(--muted); }
+[data-design="f"] .event-item__summary { margin-top: var(--s-2); font-size: inherit; color: var(--muted); }
 
 [data-design="f"] .event-item--compact { padding: var(--s0) 0; }
 
@@ -481,7 +481,7 @@
 
 [data-design="f"] .person__role { margin-top: .2rem; font-size: 1.0625rem; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--eyebrow); }
 
-[data-design="f"] .person__bio { margin-top: var(--s0); font-size: 1.125rem; color: var(--text); }
+[data-design="f"] .person__bio { margin-top: var(--s0); font-size: inherit; color: var(--text); }
 
 @media (max-width: 40em) {
   [data-design="f"] .person { grid-template-columns: minmax(0, 1fr); }
@@ -518,3 +518,44 @@
 /* ---------- 404 ---------------------------------------------------------- */
 
 [data-design="f"] .notfound .page-lede { color: var(--text); }
+
+/* ---------- Art-director pass ------------------------------------------- */
+
+[data-design="f"] :is(p, li, dd, address, .page-lede) { text-wrap: pretty; }
+
+[data-design="f"] :is(h1, h2, h3) { text-wrap: balance; }
+
+/* Parent link above page titles: a 44 px target without moving the title */
+[data-design="f"] .page-header .eyebrow a { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block: calc((1lh - 2.75rem) / 2); }
+
+/* Kicker on the paper-tint band: darker moss keeps 7:1 */
+[data-design="f"] .practice .eyebrow { color: var(--link-hover); }
+
+/* Register link in event lists */
+[data-design="f"] .event-item__actions { margin-top: var(--s0); }
+
+[data-design="f"] .event-item__register { position: relative; z-index: 1; }
+
+/* 44 px targets for the featured-event title and the back link, without changing rhythm */
+[data-design="f"] :is(.featured-event__title a, .back-link a) { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block: calc((1lh - 2.75rem) / 2); }
+
+[data-design="f"] .roster td { vertical-align: baseline; }
+
+[data-design="f"] .roster .tag { font-size: 1.125rem; }
+
+/* Desktop hero: crop the pale strip along the photo's left edge */
+@media (min-width: 64em) {
+  [data-design="f"] .hero--image .hero__media img { aspect-ratio: 1360 / 595; object-position: 100% 0; transform: none; }
+}
+
+/* Desktop nav never wraps a label; tighter spacing on narrow desktops */
+@media (min-width: 62em) {
+  [data-design="f"] .menu__link { white-space: nowrap; }
+}
+
+@media (min-width: 62em) and (max-width: 74.99em) {
+  [data-design="f"] .menu__link { padding-inline: .4rem; }
+  [data-design="f"] .has-sub .menu__link { padding-right: 0; }
+  [data-design="f"] .site-header .brand__logo { height: 2.75rem; }
+  [data-design="f"] .site-nav__cta { margin-left: .5rem; }
+}
