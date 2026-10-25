@@ -67,6 +67,14 @@ content:
             label: Group name
             type: string
             required: true
+          - name: heading
+            label: Heading (classic layout)
+            description: "The group's title line on the Meditation groups page, for example: Monday evenings at 7:00 pm"
+            type: string
+          - name: leader
+            label: Leader line (classic layout)
+            description: "Optional. For example: Led by Ben Thacker-Gwaltney"
+            type: string
           - name: day
             label: Day
             type: select
@@ -88,6 +96,20 @@ content:
             label: Description
             description: Markdown text. **bold**, *italic*, [link text](https://...). A blank line starts a new paragraph.
             type: text
+          - name: image
+            label: Image
+            description: Optional picture shown after the teacher schedule.
+            type: image
+          - name: image_link
+            label: Image link
+            description: Optional https:// link that opens when the picture is clicked.
+            type: string
+          - name: more
+            label: More text (after the schedule)
+            description: Shown after the teacher schedule and picture (Zoom details, map links). A link alone on its own line stays a plain link here.
+            type: rich-text
+            options:
+              format: markdown
 
   # 2. Events (one file per event: content/events/yyyy-mm-dd-slug.md)
   - name: events
@@ -148,6 +170,10 @@ content:
       - name: register_url
         label: Registration link
         description: Optional https:// link to the registration form.
+        type: string
+      - name: register_label
+        label: Registration button text
+        description: "Optional. Default: Register. For example: Join Waiting List"
         type: string
       - name: image
         label: Event image
@@ -251,6 +277,10 @@ content:
       - name: hero_image
         label: Banner image
         type: image
+      - name: hero_image_classic
+        label: Banner image (classic layout)
+        description: The wide photo at the top of the homepage (1920 × 714 px, text is part of the picture).
+        type: image
       - name: body
         label: Welcome text
         type: rich-text
@@ -258,7 +288,7 @@ content:
           format: markdown
 
   - name: home-cards
-    label: "Homepage: feature cards"
+    label: "Homepage: feature cards, weekly summary & boxes"
     type: file
     path: data/home.yaml
     format: yaml
@@ -289,6 +319,77 @@ content:
             label: Card image
             description: Optional.
             type: image
+      - name: days
+        label: Weekly groups summary (classic layout)
+        description: The per-day list in the left column of the homepage.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{heading}"
+        fields:
+          - name: heading
+            label: Day heading
+            description: "For example: Monday evenings"
+            type: string
+            required: true
+          - name: leader
+            label: Leader line
+            description: "Optional. For example: Rotating group leaders"
+            type: string
+          - name: where
+            label: Where and when
+            description: "Optional. For example: At the Wesley Foundation at 7:00 pm"
+            type: string
+          - name: text
+            label: Text
+            description: Markdown text. **bold**, *italic*, [link text](https://...). A blank line starts a new paragraph.
+            type: text
+      - name: days_outro
+        label: Line after the weekly groups summary (classic layout)
+        description: Markdown text, for example a link to the Meditation groups page.
+        type: text
+      - name: boxes
+        label: Right-column boxes (classic layout)
+        description: The boxes in the right column of the homepage, top to bottom.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Box title
+            type: string
+            required: true
+          - name: title_url
+            label: Title link
+            description: "Optional. A site path such as /events/ or a full https:// link."
+            type: string
+          - name: small_title
+            label: Smaller title
+            description: Turn on for a smaller title (the newsletter boxes).
+            type: boolean
+            default: false
+          - name: text
+            label: Box text
+            description: Markdown text. A link alone on its own line shows as a button.
+            type: text
+          - name: embed
+            label: Page preview card
+            description: "Optional. A site path such as /meditation-groups/. Shows a preview card of that page under the text."
+            type: string
+          - name: box_link
+            label: Whole-box link
+            description: "Optional. A site path such as /meditation-groups/. Makes the whole box clickable (opens in a new tab)."
+            type: string
+          - name: button_label
+            label: Button text
+            description: Optional button under the text.
+            type: string
+          - name: button_url
+            label: Button link
+            type: string
 
   # 6. Teachers and board (data/people.yaml)
   - name: people
