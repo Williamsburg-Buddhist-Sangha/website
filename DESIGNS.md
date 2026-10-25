@@ -1,5 +1,8 @@
 # Designs
 
+> The build currently uses the **Classic** layout (`params.layout = "classic"`), which
+> ignores everything about designs below. See [Layout switch](#layout-switch).
+
 The site has one set of templates and several switchable **designs**. A design is one CSS
 file that restyles the shared markup. The active design is the `data-design="<id>"`
 attribute on `<html>`.
@@ -205,6 +208,39 @@ Rendered by `layouts/page.html` inside `.prose.page-body`, after the body text
 | `/events/<slug>/` | event single |
 | `/meet-our-teachers/`, `/board-of-directors/` | page-header, prose, people |
 | other pages | page-header, prose (lists, tables, figures, buttons) |
+
+## Layout switch
+
+`hugo.toml` `[params] layout` picks one of two template sets at build time:
+
+| `layout` | What renders | Loads |
+|---|---|---|
+| `"classic"` (current) | a reproduction of the production WordPress site (Charitas Lite theme + Divi Builder page bodies) | `css/classic.css` (Hugo Pipes: `assets/css/classic/*.css` in file-name order → concat → fingerprint; not minified, because the minifier lowercases font-family names), `js/classic.js` (defer), Google Fonts Arimo + Archivo Narrow 400/700 and Lato (the same families and weights production loads) |
+| `"modern"` (or the key missing) | designs A–F, everything above this section | `css/main.css`, `js/site.js`, the active design's fonts |
+
+- `layouts/baseof.html` dispatches: classic → `partial "classic/document.html"` (not
+  `classic/baseof.html`: Hugo treats any file named `baseof.html` as a base template). The
+  modern branch is the old `baseof.html`, unchanged. With `layout = "modern"` the build is
+  byte-identical to commit 924e5fd (same content; minified and unminified; also with
+  `switcher = true`). Modern templates and CSS are frozen; do not edit them for Classic.
+- Classic templates: `layouts/_partials/classic/`. `document.html` renders head, `#toolbar`,
+  `header#branding` > `#sticky_navigation` (`#site-navigation`), the home `#teaser` or the inner-page
+  title band `.teaser-page-list` (h1 title + `#rootline` breadcrumbs),
+  `#main` > (home | `#primary` events | event | 404 | page), `#colophon`. It dispatches by page
+  kind. It re-uses `content.html` (link alone → `a.btn.btn--primary`, styled as the Divi
+  button), `url.html`, `img-size.html`, `site-info.html`, `events-split.html`, `menu-href.html`.
+- Classic markup copies production's ids and Divi class names (`.et-l`, `.et_pb_section`,
+  `.et_pb_row`, `.et_pb_column_3_5` …, `.et_pb_text`, `.et_pb_divider`, `.et_pb_button`), so the
+  CSS follows production's numbers. Body `<hr>` → Divi divider between text modules.
+  Per-page module design (production's `et-builder-module-design-deferred` CSS) lives in
+  `assets/css/classic/30-pages.css`, keyed by `body.page-<file-name>` / `body.is-home` / `body.is-events`.
+- Classic uses the Classic-only fields of `CONTENT-MODEL.md` (`hero_image_classic`, home
+  `days`/`days_outro`/`boxes`, group `heading`/`leader`/`image`/`image_link`/`more`, event
+  `register_label`) and ignores modern-only content (tagline, cards, "Sit with us", design E data).
+  It has no dark mode (production has none) and no design switcher.
+- JS off: the About Us dropdown works with `:hover`/`:focus-within`, the mobile menu (≤ 768 px) is a
+  `<details>` disclosure with sub-menus open, and the header is static instead of sticky.
+- Switch back: set `layout = "modern"` (or delete the key) and rebuild. Nothing else changes.
 
 ## Regression testing
 

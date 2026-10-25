@@ -9,6 +9,8 @@ buildFuture = true
   preview = true
   # Design switcher pill + ?design= / stored choice. false = every visitor sees defaultDesign.
   switcher = false
+  # Layout: "classic" (WordPress look, layouts/_partials/classic/) or "modern" (designs A-F).
+  layout = "classic"
   defaultDesign = 'a'
   description = 'The Williamsburg Buddhist Sangha offers meditation and study groups, special events, classes and a community for practice and learning in Williamsburg, Virginia.'
   logo = '/images/logo.png'
