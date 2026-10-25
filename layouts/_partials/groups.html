@@ -1,0 +1,43 @@
+{{- /* Meditation groups + monthly teacher rosters from data/groups.yaml.
+       Context: the page. Rendered after the body when front matter has show_groups: true
+       (layouts/page.html); also used by the legacy {{< groups >}} shortcode. */ -}}
+{{- $today := now.Format "2006-01-02" -}}
+<div class="wide groups">
+{{- range site.Data.groups.groups }}
+  {{- $roster := .roster | default slice }}
+  {{- $nextFound := false }}
+  <article class="group" id="{{ anchorize .name }}">
+    <div class="group__info">
+      <p class="group__day">{{ .day }}</p>
+      <h2 class="group__name">{{ .name }}</h2>
+      <dl class="facts facts--inline">
+        {{- with .time }}<div><dt>When</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{- with .location }}<div><dt>Where</dt><dd>{{ . }}</dd></div>{{ end }}
+      </dl>
+      {{- with .description }}<div class="group__desc">{{ . | $.RenderString (dict "display" "block") }}</div>{{ end }}
+      {{- with .zoom_url }}<p class="group__zoom"><a class="btn btn--primary btn--small" href="{{ . }}" rel="noopener">Join on Zoom</a></p>{{ end }}
+    </div>
+    {{- if $roster }}
+    <div class="group__roster">
+      <table class="roster">
+        <caption>Teacher schedule</caption>
+        <thead><tr><th scope="col">Date</th><th scope="col">Teacher</th></tr></thead>
+        <tbody>
+          {{- range $roster }}
+          {{- $d := time.AsTime .date }}
+          {{- $iso := $d.Format "2006-01-02" }}
+          {{- $past := lt $iso $today }}
+          {{- $isNext := and (not $past) (not $nextFound) }}
+          {{- if $isNext }}{{ $nextFound = true }}{{ end }}
+          <tr class="{{ if $past }}is-past{{ end }}{{ if $isNext }}is-next{{ end }}">
+            <td><time datetime="{{ $iso }}">{{ $d.Format "Jan 2" }}</time>{{ if $isNext }} <span class="tag">Next</span>{{ end }}</td>
+            <td>{{ .teacher }}</td>
+          </tr>
+          {{- end }}
+        </tbody>
+      </table>
+    </div>
+    {{- end }}
+  </article>
+{{- end }}
+</div>

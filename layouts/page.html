@@ -2,7 +2,9 @@
 {{ partial "page-header.html" . }}
 <div class="container">
   <div class="prose page-body">
-    {{ .Content }}
+    {{ partial "content.html" . }}
+    {{- if .Params.show_groups }}{{ partial "groups.html" . }}{{ end }}
+    {{- with .Params.people }}{{ partial "people.html" (dict "page" $ "key" .) }}{{ end }}
   </div>
 </div>
 {{ end }}

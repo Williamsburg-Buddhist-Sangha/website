@@ -127,14 +127,15 @@ is listed. `.container` = centred box `max-width: var(--wide)` with side gutters
 
 | Hook | Notes |
 |---|---|
-| `.btn` + `.btn--primary` / `.btn--accent` / `.btn--ghost`, sizes `.btn--small` / `.btn--large` / `.btn--block`; `.btn-row` | buttons (also the `button` shortcode) |
+| `.btn` + `.btn--primary` / `.btn--accent` / `.btn--ghost`, sizes `.btn--small` / `.btn--large` / `.btn--block`; `.btn-row` | buttons. In page bodies a link alone in its own paragraph renders as a bare `a.btn.btn--primary` child of `.prose` (no `<p>`), the same markup as the legacy `button` shortcode |
 | `.eyebrow` | small label above titles |
 | `.section` > `.container`; `.section-head` > `.eyebrow`, `h2.section-title`, `p.section-lede`; `.section-title--small` | homepage sections |
 | `.page-header` > `.page-header__inner.container` > `p.eyebrow` (parent menu link, optional), `h1.page-title`, `p.page-lede` (description, optional), `span.ornament` (hidden in base; decorative) | inner-page title band |
 | `.page-banner-wrap.container` > `figure.page-banner` > `img` | page `hero_image` (optional) |
 | `.page-body.prose` | Markdown body; children limited to `--measure` |
-| `.wide` | shortcode output that breaks out of the prose column to `--wide` (left-aligned by default; centre it if your prose column is centred) |
-| `aside.callout` > `p.callout__title` (optional) | callout shortcode |
+| `.wide` | groups and people blocks (and legacy shortcode output) that break out of the prose column to `--wide` (left-aligned by default; centre it if your prose column is centred) |
+| `.prose > figure` > `img` | an image alone in its own paragraph of a page body (no caption) |
+| `aside.callout` > `p.callout__title` (optional) | legacy callout shortcode (not used in content) |
 | `.date-badge` > `.date-badge__month`, `.date-badge__day`, `.date-badge__year` (compact only) | event date chip |
 | `.facts` > `div` > `dt` + `dd`; `.facts--inline` | label/value lists (groups, event sidebar) |
 | `.tag` | small pill (roster "Next") |
@@ -155,7 +156,10 @@ is listed. `.container` = centred box `max-width: var(--wide)` with side gutters
 | `section.section.cards` > `.container` > `ul.card-grid` > `li.card` (`.card--image` when it has an image) > `img.card__img`, `.card__body` > `h3.card__title` > `a.card__link` (stretched link), `p`, `span.card__arrow` | `data/home.yaml` cards |
 | `section.section.newsletter` > `.container` > `.newsletter__inner` > `div` (`h2.section-title`, `p`) + `a.btn.btn--accent` | when `params.newsletterURL` is set |
 
-### Meditation groups (`{{< groups >}}`, page `/meditation-groups/`)
+### Meditation groups (page `/meditation-groups/`, front matter `show_groups: true`)
+
+Rendered by `layouts/page.html` inside `.prose.page-body`, after the body text
+(`layouts/_partials/groups.html`; the legacy `{{< groups >}}` shortcode calls the same partial).
 
 | Hook | Notes |
 |---|---|
@@ -163,18 +167,21 @@ is listed. `.container` = centred box `max-width: var(--wide)` with side gutters
 | `.group__info` > `p.group__day`, `h2.group__name`, `dl.facts.facts--inline` (When/Where), `.group__desc` (Markdown), `p.group__zoom` > `a.btn` (optional) | |
 | `.group__roster` > `table.roster` > `caption`, `thead`, `tbody` > `tr` (`.is-past`, `.is-next`) > `td` (date `time` + optional `.tag`), `td` (teacher) | only when the group has a roster |
 
-### Events (`/events/`, `{{< events >}}`, single event)
+### Events (`/events/`, single event, legacy `{{< events >}}`)
 
 | Hook | Notes |
 |---|---|
 | `section.events-block` > `h2.section-title` + list | upcoming |
 | `ul.event-list` > `li.event-item` > `.date-badge`, `.event-item__body` > `h3.event-item__title` > `a` (stretched), `p.event-item__meta` > `span`×(1–3), `p.event-item__summary`, `p.event-item__actions` > `a.event-item__register.btn.btn--primary.btn--small` | `.event-list--compact` / `.event-item--compact` for past events (no summary, no Register, badge shows year). The Register link renders only when the event has `register_url`; it carries a visually hidden "for <title>". The title link is stretched over the whole item, so give `.event-item__register` `position: relative; z-index: 1` (every design does) or it cannot be clicked. |
 | `section.events-block--past` > `details.past-events` > `summary` > `h2.section-title.section-title--small` > `span.count` | collapsed past events |
-| `.wide.events-embed` | wrapper when the list comes from the `events` shortcode |
+| `.wide.events-embed` | wrapper when the list comes from the legacy `events` shortcode (not used in content) |
 | `article.event` > `header.page-header` (`p.eyebrow` link, `h1.page-title`, `p.page-lede.event__when`) | single event |
 | `.event__layout.container` > `.event__main` (`p.notice` if past, `figure.event__image`, `p.event__summary`, `.prose`) + `aside.event__facts` (`dl.facts`, Register `a.btn--primary.btn--block`) | |
 
-### People (`{{< people "teachers" >}}`, `{{< people "board" >}}`)
+### People (front matter `people: teachers` or `people: board`)
+
+Rendered by `layouts/page.html` inside `.prose.page-body`, after the body text
+(`layouts/_partials/people.html`; the legacy `{{< people "key" >}}` shortcode calls the same partial).
 
 | Hook | Notes |
 |---|---|
@@ -193,11 +200,11 @@ is listed. `.container` = centred box `max-width: var(--wide)` with side gutters
 | Page | Components |
 |---|---|
 | `/` | hero, welcome (+ featured event), practice, cards, newsletter |
-| `/meditation-groups/` | page-header, page-banner (if image), prose, groups, callout |
-| `/events/` | page-header, prose with `events-embed`, events-block (upcoming), past-events |
+| `/meditation-groups/` | page-header, page-banner (if image), prose, groups (after the prose text) |
+| `/events/` | page-header, prose (intro text, optional), events-block (upcoming), past-events |
 | `/events/<slug>/` | event single |
 | `/meet-our-teachers/`, `/board-of-directors/` | page-header, prose, people |
-| other pages | page-header, prose (lists, tables, images, buttons, callouts) |
+| other pages | page-header, prose (lists, tables, figures, buttons) |
 
 ## Regression testing
 

@@ -2,7 +2,7 @@
 {{ partial "page-header.html" . }}
 {{- $ev := partial "events-split.html" . }}
 <div class="container">
-  {{- with .Content }}<div class="prose page-body">{{ . }}</div>{{ end }}
+  {{- with partial "content.html" . }}<div class="prose page-body">{{ . }}</div>{{ end }}
   <section class="events-block" aria-labelledby="upcoming-h">
     <h2 id="upcoming-h" class="section-title">Upcoming events</h2>
     {{ partial "event-list.html" . }}

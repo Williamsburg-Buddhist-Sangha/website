@@ -16,7 +16,7 @@
       {{- if $isPast }}<p class="notice">This event has already taken place.</p>{{ end }}
       {{- with .Params.image }}<figure class="event__image"><img src="{{ partial "url.html" . }}"{{ partial "img-size.html" . }} alt="" decoding="async"></figure>{{ end }}
       {{- with .Params.summary }}<p class="event__summary">{{ . | markdownify }}</p>{{ end }}
-      <div class="prose">{{ .Content }}</div>
+      <div class="prose">{{ partial "content.html" . }}</div>
     </div>
     <aside class="event__facts" aria-label="Event details">
       <dl class="facts">

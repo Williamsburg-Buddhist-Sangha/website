@@ -29,7 +29,7 @@
       {{- if not (hasPrefix (trim .RawContent " \n\r\t") "#") }}
       <h2 class="section-title">Welcome</h2>
       {{- end }}
-      {{ .Content }}
+      {{ partial "content.html" . }}
     </div>
     {{- with $featured }}
     <aside class="featured-event" aria-labelledby="featured-title">

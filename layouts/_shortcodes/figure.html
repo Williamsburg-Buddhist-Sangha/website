@@ -1,4 +1,6 @@
-{{- /* Overrides Hugo's built-in figure so root-relative src works under a subpath baseURL. */ -}}
+{{- /* Legacy shortcode. Overrides Hugo's built-in figure so root-relative src works under a
+       subpath baseURL. In page bodies an image alone in its own paragraph renders as a
+       <figure> without caption (layouts/_partials/content.html). */ -}}
 {{- $src := .Get "src" -}}
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
   {{- with .Get "link" }}<a href="{{ partial "url.html" . }}">{{ end -}}

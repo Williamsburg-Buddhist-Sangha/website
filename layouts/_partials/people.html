@@ -1,0 +1,22 @@
+{{- /* People list from data/people.yaml. Context: dict "page" (the page) "key" ("teachers" or
+       "board"). Rendered after the body when front matter has people: <key>
+       (layouts/page.html); also used by the legacy {{< people "key" >}} shortcode. */ -}}
+{{- $key := .key | default "teachers" -}}
+{{- $page := .page -}}
+{{- $people := index site.Data.people $key -}}
+{{- with $people }}
+<ul class="wide people" role="list">
+  {{- range . }}
+  <li class="person">
+    {{ partial "avatar.html" (dict "name" .name "photo" .photo "class" "person__photo") }}
+    <div class="person__body">
+      <h3 class="person__name">{{ .name }}</h3>
+      {{- with .role }}<p class="person__role">{{ . }}</p>{{ end }}
+      {{- with .bio }}<div class="person__bio">{{ . | $page.RenderString (dict "display" "block") }}</div>{{ end }}
+    </div>
+  </li>
+  {{- end }}
+</ul>
+{{- else }}
+{{- warnf "people: no entries for key %q in data/people.yaml (%s)" $key $page.File.Path }}
+{{- end }}

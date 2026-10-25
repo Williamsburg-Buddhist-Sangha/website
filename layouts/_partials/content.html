@@ -1,0 +1,37 @@
+{{- /* Page body HTML (.Content) with two block rules for the Pages CMS rich-text editor.
+       Context: the page. Returns safe HTML. Use it instead of .Content in page templates.
+
+       1. Standalone link -> button. A top-level paragraph that holds one link and nothing
+          else renders as `<a class="btn btn--primary">`, without the <p> (the same markup
+          as the legacy {{< button >}} shortcode). The link text may use bold/italic/code.
+          Links with an image inside, and paragraphs nested in a list item, block quote,
+          div, aside or table (also shortcode output), stay plain links.
+       2. Standalone image -> figure. A top-level paragraph that holds one image and
+          nothing else renders as <figure><img ...></figure> (the same markup as the
+          legacy {{< figure >}} shortcode, without caption).
+
+       Goldmark writes every block tag on its own line, so the rules run per line and
+       count container-tag nesting, so both rules apply to top-level paragraphs only. */ -}}
+{{- $html := string .Content -}}
+{{- if findRE `<p><(?:a|img) ` $html 1 -}}
+  {{- $btn := `^<p><a href="([^"]*)"([^>]*)>((?:[^<]|</?(?:em|strong|code|u|s|del)>)+)</a></p>$` -}}
+  {{- $fig := `^<p>(<img [^>]*>)</p>$` -}}
+  {{- $open := `<(?:li|blockquote|div|aside|article|section|details|figure|table)[\s>]` -}}
+  {{- $close := `</(?:li|blockquote|div|aside|article|section|details|figure|table)>` -}}
+  {{- $out := slice -}}
+  {{- $depth := 0 -}}
+  {{- range split $html "\n" -}}
+    {{- $line := . -}}
+    {{- if le $depth 0 -}}
+      {{- if findRE $btn $line 1 -}}
+        {{- $line = replaceRE $btn `<a class="btn btn--primary" href="${1}"${2}>${3}</a>` $line -}}
+      {{- else if findRE $fig $line 1 -}}
+        {{- $line = replaceRE $fig `<figure>${1}</figure>` $line -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $depth = add $depth (sub (len (findRE $open $line)) (len (findRE $close $line))) -}}
+    {{- $out = $out | append $line -}}
+  {{- end -}}
+  {{- $html = delimit $out "\n" -}}
+{{- end -}}
+{{- return ($html | safeHTML) -}}
