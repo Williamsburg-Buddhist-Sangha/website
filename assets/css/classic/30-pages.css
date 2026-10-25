@@ -140,3 +140,5 @@
 .page-vision-mission-and-values .et_pb_text_inner > * + p { padding-top: 15px; }
 .page-vision-mission-and-values .et_pb_text_inner > * + ul { margin-top: 30px; }
 .page-vision-mission-and-values .et_pb_text_inner > ul ~ ul li + li { margin-top: 74px; }
+/* Production person text modules are at least 235px tall (empty paragraphs under short bios). */
+.et-l .person { min-height: 235px; }
