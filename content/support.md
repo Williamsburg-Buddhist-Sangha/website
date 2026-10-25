@@ -30,4 +30,4 @@ The first time you text-to-give, you will be prompted to enter your payment info
 
 The Williamsburg Buddhist Sangha is a tax-exempt public charity designated under section 501(c)3 of the US Internal Revenue Code.
 
-[Donate Now](https://wbs.breezechms.com/give/online)
+**[Donate Now](https://wbs.breezechms.com/give/online)**

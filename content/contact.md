@@ -27,7 +27,7 @@ Williamsburg, VA 23185
 
 CLICK this button to sign up for our monthly newsletter. Buddhism, meditation practices, and WBS activities.
 
-[Subscribe](https://williamsburgbuddhistsangha.us17.list-manage.com/subscribe?u=fc1ad0b20592452e7a0fbf777&id=4ef0d32acc)
+**[Subscribe](https://williamsburgbuddhistsangha.us17.list-manage.com/subscribe?u=fc1ad0b20592452e7a0fbf777&id=4ef0d32acc)**
 
 ---
 
@@ -35,4 +35,4 @@ CLICK this button to sign up for our monthly newsletter. Buddhism, meditation pr
 
 CLICK this button to see the browser version of our latest Newsletter
 
-[Current Newsletter](https://mailchi.mp/379a7b876c7b/wmsbg-buddhist-sangha-newsletter-14206004?e=dd6f614fc1)
+**[Current Newsletter](https://mailchi.mp/379a7b876c7b/wmsbg-buddhist-sangha-newsletter-14206004?e=dd6f614fc1)**

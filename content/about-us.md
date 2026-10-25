@@ -15,7 +15,10 @@ In keeping with Buddhist tradition, the WBS is supported entirely by ***Dana***�
 
 The practical expression of this principle is that there will never be a fee – or even expectation of a donation – for participating in a Sangha activity.  We hope that those who find value in our activities will support them to the extent they are able to do so, financially or as a volunteer, or both – and our operations will depend upon that support.
 
-[WBS Vision, Mission and Values Statement](/vision-mission-and-values/)  
-[WBS Board of Directors](/board-of-directors/)  
-[Meet Our Teachers](/meet-our-teachers/)  
+[WBS Vision, Mission and Values Statement](/vision-mission-and-values/)
+
+[WBS Board of Directors](/board-of-directors/)
+
+[Meet Our Teachers](/meet-our-teachers/)
+
 [Bylaws](/bylaws/)

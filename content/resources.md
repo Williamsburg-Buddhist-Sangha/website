@@ -15,15 +15,24 @@ menu:
 
 ## **Information about Buddhism – Online**
 
-[Insight Meditation Society Resources](https://www.dharma.org/resources/)  
-[Buddhism for Beginners](https://tricycle.org/beginners/) (Tricycle Magazine comprehensive introductory resource)  
-[Buddhanet](https://www.buddhanet.net/)  
-[Shambala Buddhism](https://shambhala.org/)  
-[The Buddhist Society (London)](https://www.thebuddhistsociety.org/)  
-[Overview of Buddhist Texts](https://www.thebuddhistsociety.org/page/scriptures-texts) (The Buddhist Society)  
-[Internet Sacred Texts Archive](http://www.sacred-texts.com/bud/index.htm)  
-[Buddha 101](https://buddha101.com/)  
-[Dharma Seed](http://dharmaseed.org/) (free [really!] audio recordings of Dharma talks)  
+[Insight Meditation Society Resources](https://www.dharma.org/resources/)
+
+[Buddhism for Beginners](https://tricycle.org/beginners/) (Tricycle Magazine comprehensive introductory resource)
+
+[Buddhanet](https://www.buddhanet.net/)
+
+[Shambala Buddhism](https://shambhala.org/)
+
+[The Buddhist Society (London)](https://www.thebuddhistsociety.org/)
+
+[Overview of Buddhist Texts](https://www.thebuddhistsociety.org/page/scriptures-texts) (The Buddhist Society)
+
+[Internet Sacred Texts Archive](http://www.sacred-texts.com/bud/index.htm)
+
+[Buddha 101](https://buddha101.com/)
+
+[Dharma Seed](http://dharmaseed.org/) (free [really!] audio recordings of Dharma talks)
+
 [Sounds True: Books and Online courses](https://www.soundstrue.com/store/meditation.html) by teachers such as Jack Kornfield, Pema Chodron, Tara Brach and others
 
 ## **Regional Retreat Centers**
