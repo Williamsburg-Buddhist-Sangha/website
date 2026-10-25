@@ -15,7 +15,7 @@
   {{- end -}}
 {{- end -}}
 {{- with $home.days_outro }}{{ $days = printf "%s<h5>%s</h5>\n" $days (. | $page.RenderString) }}{{ end -}}
-{{- $body := printf "%s\n%s" (string (partial "content.html" .)) $days -}}
+{{- $body := printf "%s\n%s" (string (partial "classic/content.html" .)) $days -}}
 <div class="entry-content">
 	<div class="et-l">
 		<div class="et_builder_inner_content et_pb_gutters3">

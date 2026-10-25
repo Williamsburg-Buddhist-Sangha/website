@@ -3,7 +3,7 @@
 <div class="et_pb_module et_pb_text et_pb_text_align_left event" id="{{ .File.ContentBaseName | urlize }}">
 	<div class="et_pb_text_inner">
 		<h1>{{ .Title }}</h1>
-		{{ partial "content.html" . }}
+		{{ partial "classic/content.html" . }}
 	</div>
 </div>
 {{- with .Params.register_url }}

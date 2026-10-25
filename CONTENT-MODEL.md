@@ -68,16 +68,19 @@ Markdown. Keep bodies to what that editor can hold, so a save does not change th
   `[***Title***](url)`. The editor writes autolinks `<https://…>` as `[https://…](https://…)`.
 - No raw HTML, no Hugo shortcodes, no link around an image: the editor drops or breaks them.
 
-Two block rules (`layouts/_partials/content.html`) replace the old shortcodes:
+Two block rules replace the old shortcodes. The Classic layout (`params.layout = "classic"`,
+`layouts/_partials/classic/content.html`) and the modern layout (`layouts/_partials/content.html`)
+differ in the button rule:
 
-| Write in the body | Renders as |
-|---|---|
-| a link alone in its own paragraph: `[Donate Now](https://…)` (bold/italic allowed) | a primary button (`a.btn.btn--primary`), where the paragraph was |
-| an image alone in its own paragraph: `![Alt text](/images/x.jpg)` | `<figure><img alt="Alt text" …></figure>` (no caption) |
+| Write in the body | Classic renders | Modern renders |
+|---|---|---|
+| a **bold** link alone in its own paragraph: `**[Donate Now](https://…)**` | a button (`a.btn.btn--primary`, Divi look, label not bold), where the paragraph was | a button (label bold) |
+| a plain link alone in its own paragraph: `[Buddhanet](https://…)` | a normal paragraph with the link | a button |
+| an image alone in its own paragraph: `![Alt text](/images/x.jpg)` | `<figure><img alt="Alt text" …></figure>` (no caption) | the same |
 
-A link with other text in the same paragraph stays a normal link. Where production shows a
-column of plain links (About Us, Resources "Information about Buddhism – Online"), the links
-share one paragraph with line breaks (two trailing spaces), so they do not turn into buttons. Links in list items, quotes
+So write every real button as a bold link alone in its paragraph. A column of plain links
+(About Us, Resources "Information about Buddhism – Online") is one paragraph per link, as on
+production. A link with other text in the same paragraph stays a normal link. Links in list items, quotes
 and tables stay normal links. Image captions are not supported: the editor keeps an image title
 (`![alt](src "title")`) but has no field for it, so put the description in the alt text.
 

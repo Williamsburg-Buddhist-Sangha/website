@@ -1,0 +1,31 @@
+{{- /* Classic page body: like _partials/content.html, with Classic's button rule.
+       1. Bold link alone -> button. A top-level paragraph that holds one bold link and nothing
+          else (`**[Donate Now](https://…)**`) renders as a.btn.btn--primary (styled as the Divi
+          button), without the <p> and without the bold. A plain link alone in its paragraph
+          stays a normal paragraph (production has many one-link paragraphs, e.g. About Us and
+          Resources link lists). Modern (_partials/content.html) turns any link alone into a button.
+       2. Image alone -> <figure> (as content.html).
+       Context: the page. Returns safe HTML. */ -}}
+{{- $html := string .Content -}}
+{{- if findRE `<p>(?:<(?:em|strong)>)*<(?:a|img) ` $html 1 -}}
+  {{- $btn := `^<p>(?:<em>)?<strong>(?:<em>)?<a href="([^"]*)"([^>]*)>((?:[^<]|</?(?:em|strong|code|ins|del)>)+)</a>(?:</em>)?</strong>(?:</em>)?</p>$` -}}
+  {{- $fig := `^<p>(<img [^>]*>)</p>$` -}}
+  {{- $open := `<(?:li|blockquote|div|aside|article|section|details|figure|table)[\s>]` -}}
+  {{- $close := `</(?:li|blockquote|div|aside|article|section|details|figure|table)>` -}}
+  {{- $out := slice -}}
+  {{- $depth := 0 -}}
+  {{- range split $html "\n" -}}
+    {{- $line := . -}}
+    {{- if le $depth 0 -}}
+      {{- if findRE $btn $line 1 -}}
+        {{- $line = replaceRE $btn `<a class="btn btn--primary" href="${1}"${2}>${3}</a>` $line -}}
+      {{- else if findRE $fig $line 1 -}}
+        {{- $line = replaceRE $fig `<figure>${1}</figure>` $line -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $depth = add $depth (sub (len (findRE $open $line)) (len (findRE $close $line))) -}}
+    {{- $out = $out | append $line -}}
+  {{- end -}}
+  {{- $html = delimit $out "\n" -}}
+{{- end -}}
+{{- return ($html | safeHTML) -}}

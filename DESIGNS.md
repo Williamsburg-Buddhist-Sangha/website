@@ -227,8 +227,10 @@ Rendered by `layouts/page.html` inside `.prose.page-body`, after the body text
   `header#branding` > `#sticky_navigation` (`#site-navigation`), the home `#teaser` or the inner-page
   title band `.teaser-page-list` (h1 title + `#rootline` breadcrumbs),
   `#main` > (home | `#primary` events | event | 404 | page), `#colophon`. It dispatches by page
-  kind. It re-uses `content.html` (link alone → `a.btn.btn--primary`, styled as the Divi
-  button), `url.html`, `img-size.html`, `site-info.html`, `events-split.html`, `menu-href.html`.
+  kind. Page bodies go through `classic/content.html`: a **bold** link alone in its paragraph →
+  `a.btn.btn--primary` (styled as the Divi button), a plain link alone stays a paragraph
+  (modern's `content.html` turns any link alone into a button), image alone → `<figure>`.
+  It re-uses `url.html`, `img-size.html`, `site-info.html`, `events-split.html`, `menu-href.html`.
 - Classic markup copies production's ids and Divi class names (`.et-l`, `.et_pb_section`,
   `.et_pb_row`, `.et_pb_column_3_5` …, `.et_pb_text`, `.et_pb_divider`, `.et_pb_button`), so the
   CSS follows production's numbers. Body `<hr>` → Divi divider between text modules.

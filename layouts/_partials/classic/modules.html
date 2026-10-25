@@ -1,8 +1,8 @@
 {{- /* Split body HTML into Divi-like text modules. Context: dict "html" (string), "split"
        ("hr": a top-level <hr> becomes a divider module between text modules; "h1": every
        top-level <h1> starts a new text module, as the production homepage is built),
-       "class" (extra classes on each text module). A body button (content.html: a link alone in
-       its paragraph) is wrapped in a centred .et_pb_button_module_wrapper, as production.
+       "class" (extra classes on each text module). A body button (classic/content.html: a bold link
+       alone in its paragraph) is wrapped in a centred .et_pb_button_module_wrapper, as production.
        Returns safe HTML. */ -}}
 {{- $html := string .html -}}
 {{- $parts := slice -}}

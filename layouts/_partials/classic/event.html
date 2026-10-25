@@ -1,7 +1,7 @@
 {{- /* Single event page (not on production): rendered like an inner page. */ -}}
 {{- $ev := partial "events-split.html" . -}}
 {{- $isPast := in $ev.past . -}}
-{{- $h := printf "<div class=\"et_pb_module et_pb_text et_pb_text_align_left event\"><div class=\"et_pb_text_inner\">\n<h1>%s</h1>\n%s%s\n</div></div>" (.Title | htmlEscape) (cond $isPast "<p><em>This event has already taken place.</em></p>\n" "") (string (partial "content.html" .)) -}}
+{{- $h := printf "<div class=\"et_pb_module et_pb_text et_pb_text_align_left event\"><div class=\"et_pb_text_inner\">\n<h1>%s</h1>\n%s%s\n</div></div>" (.Title | htmlEscape) (cond $isPast "<p><em>This event has already taken place.</em></p>\n" "") (string (partial "classic/content.html" .)) -}}
 {{- if and .Params.register_url (not $isPast) -}}
   {{- $h = printf "%s\n<div class=\"et_pb_button_module_wrapper et_pb_button_alignment_center et_pb_module\"><a class=\"btn btn--primary et_pb_button\" href=\"%s\">%s</a></div>" $h (partial "url.html" .Params.register_url) (.Params.register_label | default "Register" | htmlEscape) -}}
 {{- end -}}
