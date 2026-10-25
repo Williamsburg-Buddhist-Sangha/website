@@ -16,3 +16,82 @@ cards:
       and others.
     link: /support/
     image: /images/dana.jpg
+days:
+  - heading: Monday evenings
+    leader: Rotating group leaders
+    where: At the Williamsburg Unitarian Universalist Church at 7:00 pm
+    text: We typically introduce ourselves, have a settling-in meditation for about
+      5 minutes, one of our leaders gives a talk/discussion for about 20 minutes
+      and then we meditate for another 20 mins. We typically sit in chairs, but
+      occasionally participants us a mat/cushion to sit on the floor. In person
+      and on Zoom.
+  - heading: Wednesday evenings
+    leader: Rotating group leaders
+    where: At the Wesley Foundation at 7:00 pm
+    text: We typically introduce ourselves, have a settling-in meditation for about
+      5 minutes, one of our leaders gives a talk/discussion for about 20 minutes
+      and then we meditate for another 20 mins. Sit in the provided chairs or
+      bring a cushion. In person.
+  - heading: Thursday mornings
+    leader: Led by Ben Thacker-Gwaltney
+    text: Thursday morning group reads/studies a book or a topic. Currently we are
+      studying “Open Heart, Open Mind” by Tsoknyi Rinpoche. We typically
+      introduce ourselves, have a settling-in meditation for about 5 minutes,
+      discuss the book for about 20 minutes and then we meditate for another 20
+      mins. Zoom only. We begin at 10:00 am.
+  - heading: Friday mornings
+    leader: Led by John Chowning and Doug Austin
+    text: A small group gathers on Zoom to meditate. A leader presents a topic or a
+      reading and then we meditate for about 20 minutes. We begin at 8:00 am.
+  - heading: Saturday morning walking meditation
+    leader: Led by Darrell Key
+    text: >-
+      **New Location**
+
+
+      The group meets at the Greensprings Interpretive Trail and does walking
+      meditation for about a half an hour. Brief discussion. We begin at 8:30
+      am.
+days_outro: See the [Meditation Groups page](/meditation-groups/) for schedules,
+  locations, and other information.
+boxes:
+  - title: Introduction to Buddhism
+    title_url: /events/
+    text: >-
+      Are you curious about Buddhism but not sure where to start?  
+
+      Join the Williamsburg Buddhist Sangha for our Introduction to Buddhism
+      course exploring Buddhist teachings and practice, a two-part introduction
+      course for beginners.
+
+
+      For more info, see our events page.
+
+
+      [https://williamsburgbuddhistsangha.org/upcoming-events/](/events/)
+  - title: Monday evening Yoga before meditation
+    text: >-
+      ***Led by Shomer Zwelling***
+
+
+      We are now offering yoga immediately prior to the Monday Night Meditation
+      Group –  45 minutes of Gentle Yin/Restorative Yoga from **6:00 to 6:45**
+      **pm**
+
+
+      For more information, see our Meditation Groups page:
+    embed: /meditation-groups/
+    box_link: /meditation-groups/
+  - title: Sign up to receive our Newsletter
+    small_title: true
+    text: CLICK the button below to sign up for our monthly newsletter. Buddhism,
+      meditation practices, and WBS activities.
+    button_label: Subscribe
+    button_url: https://williamsburgbuddhistsangha.us17.list-manage.com/subscribe?u=fc1ad0b20592452e7a0fbf777&id=4ef0d32acc
+  - title: Our latest Newsletter
+    small_title: true
+    text: CLICK the button below to see the browser version of our latest
+      Newsletter. (If the button doesn’t send you to the current newsletter, try
+      refreshing your screen and trying again.)
+    button_label: Current Newsletter
+    button_url: https://mailchi.mp/379a7b876c7b/wmsbg-buddhist-sangha-newsletter-14206004?e=dd6f614fc1

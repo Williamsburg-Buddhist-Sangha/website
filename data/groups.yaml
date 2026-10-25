@@ -1,11 +1,46 @@
 groups:
+  - name: Monday Evening Meditation
+    heading: Monday evenings at 7:00 pm
+    day: Monday
+    time: 7:00 pm
+    location: "Hybrid: online and in person at the Williamsburg Unitarian
+      Universalist Church on Ironbound Rd."
+    zoom_url: https://us02web.zoom.us/j/88380726022?pwd=BlIRy0YaAtaM9ZbWlDgl40j3KjtaCD.1
+    description: >-
+      Meets in a hybrid format – **both online *and* in-person** at the
+      Williamsburg Unitarian Universalist Church on Ironbound Rd.
+
+
+      *(Schedule subject to change, depending upon causes and conditions)*
+    roster:
+      - date: 2026-10-05
+        teacher: Ben Thacker-Gwaltney
+      - date: 2026-10-12
+        teacher: Asha McLaughlin
+      - date: 2026-10-19
+        teacher: John Chowning
+      - date: 2026-10-26
+        teacher: Ben Thacker-Gwaltney
+    more: |-
+      Join Zoom Meeting:
+
+      [https://us02web.zoom.us/j/88380726022?pwd=BlIRy0YaAtaM9ZbWlDgl40j3KjtaCD.1](https://us02web.zoom.us/j/88380726022?pwd=BlIRy0YaAtaM9ZbWlDgl40j3KjtaCD.1)
+
+      Meeting ID: 883 8072 6022
+
+      Passcode: 601049
+
+      Or join by phone: (309)205 3325
+
+      [Google Map of the Williamsburg Unitarian Universalist Church on Ironbound Rd](https://maps.app.goo.gl/cZZMfnYKaFBCgn3V7)
   - name: Monday Evening Yoga before Meditation
+    heading: Monday evening Yoga before meditation
     day: Monday
     time: 6:00–6:45 pm
     location: Williamsburg Unitarian Universalist Church, Ironbound Rd
     description: >-
       Immediately prior to the weekly meditation–we will offer 45 minutes of
-      Gentle Yin/Restorative Yoga from **6:00 to 6:45 pm**
+      Gentle Yin/Restorative Yoga from **6:00 to 6:45** **pm**
 
 
       Yin/Restorative Yoga is especially suited to meditation sitting.  It
@@ -23,33 +58,8 @@ groups:
       Our yoga teacher will be Shomer Zwelling, one of the founding members of
       the Williamsburg Sangha and a longtime meditator.  Shomer has been
       teaching yoga in the Williamsburg area since 2009.
-  - name: Monday Evening Meditation
-    day: Monday
-    time: 7:00 pm
-    location: "Hybrid: online and in person at the Williamsburg Unitarian
-      Universalist Church on Ironbound Rd."
-    zoom_url: https://us02web.zoom.us/j/88380726022?pwd=BlIRy0YaAtaM9ZbWlDgl40j3KjtaCD.1
-    description: |-
-      Meets in a hybrid format – **both online *and* in-person** at the Williamsburg Unitarian Universalist Church on Ironbound Rd.
-
-      *(Schedule subject to change, depending upon causes and conditions)*
-
-      Join Zoom Meeting: <https://us02web.zoom.us/j/88380726022?pwd=BlIRy0YaAtaM9ZbWlDgl40j3KjtaCD.1>  
-      Meeting ID: 883 8072 6022  
-      Passcode: 601049  
-      Or join by phone: (309)205 3325
-
-      [Google Map of the Williamsburg Unitarian Universalist Church on Ironbound Rd](https://maps.app.goo.gl/cZZMfnYKaFBCgn3V7)
-    roster:
-      - date: 2026-10-05
-        teacher: Ben Thacker-Gwaltney
-      - date: 2026-10-12
-        teacher: Asha McLaughlin
-      - date: 2026-10-19
-        teacher: John Chowning
-      - date: 2026-10-26
-        teacher: Ben Thacker-Gwaltney
   - name: Wednesday Evening Meditation
+    heading: Wednesday evenings at 7:00 pm
     day: Wednesday
     time: 7:00 pm
     location: In person at the Wesley Foundation, 526 Jamestown Road (next to the
@@ -76,16 +86,17 @@ groups:
       - date: 2026-10-28
         teacher: John Davis
   - name: Thursday Morning Book Study and Meditation
+    heading: Thursday mornings, 10:00 – 11:15 am
+    leader: Led by Ben Thacker-Gwaltney
     day: Thursday
     time: 10:00–11:15 am
     location: Zoom only
     zoom_url: https://us02web.zoom.us/j/95904664491?pwd=RHBzL1JMY04yK2lzWFlCdTROK1BjZz09
     description: |-
-      Led by Ben Thacker-Gwaltney
-
       **Zoom only.**
 
-      Join Zoom meeting: <https://us02web.zoom.us/j/95904664491?pwd=RHBzL1JMY04yK2lzWFlCdTROK1BjZz09>  
+      Join Zoom meeting: [https://us02web.zoom.us/j/95904664491?pwd=RHBzL1JMY04yK2lzWFlCdTROK1BjZz09](https://us02web.zoom.us/j/95904664491?pwd=RHBzL1JMY04yK2lzWFlCdTROK1BjZz09)
+
       Or join by phone:  646-558-8656          Meeting ID: 959-0466-4491     Passcode: 558891
 
       **Book study and meditation**: We are reading: *Open Heart, Open Mind: Awakening the Power of Essence Love*, by **Tsoknyi Rinpoche.**
@@ -97,27 +108,33 @@ groups:
       The book is out of print, but available from many booksellers online, such as [Alibris](https://www.alibris.com/Open-Heart-Open-Mind-Awakening-the-Power-of-Essence-Love-Tsoknyi-Rinpoche/book/28903056?matches=4) or [Abebooks](https://www.abebooks.com/Open-Heart-Mind-Awakening-Power-Essence/32378909649/bd). It is also available as a kindle ‘ebook’.
 
       ***Open Heart, Open Mind: Awakening the Power of Essence Love by Tsoknyi Rinpoche (with Eric Swanson)*** is a practical, accessible guide to Tibetan Buddhist teachings on mindfulness, love, and wisdom. Blending memoir with meditation guidance, Rinpoche explores how to overcome emotional patterns, connect with “essence love,” and find lasting joy.
-
-      [![Open Heart, Open Mind book cover](/images/open-heart-open-mind.jpg)](https://a.co/d/iWCQNIM)
+    image: /images/open-heart-open-mind.jpg
+    image_link: https://a.co/d/iWCQNIM
   - name: Friday Morning Meditation
+    heading: Friday mornings at 8:00 am
+    leader: Led by John Chowning and Doug Austin
     day: Friday
     time: 8:00 am
     location: Zoom only
     zoom_url: https://us02web.zoom.us/j/85775229531?pwd=RWhUWWZta3pXOVVQTVpUaE1qQWYxUT09
     description: |-
-      Led by John Chowning and Doug Austin
-
       Start your day right by joining us online for a brief reflection and meditation.
 
-      **Join Zoom Meeting:** <https://us02web.zoom.us/j/85775229531?pwd=RWhUWWZta3pXOVVQTVpUaE1qQWYxUT09>  
+      **Join Zoom Meeting:**
+
+      [https://us02web.zoom.us/j/85775229531?pwd=RWhUWWZta3pXOVVQTVpUaE1qQWYxUT09](https://us02web.zoom.us/j/85775229531?pwd=RWhUWWZta3pXOVVQTVpUaE1qQWYxUT09)
+
       Join by phone:  646-558-8656     Meeting ID: 857 7522 9531     Passcode: 171106
   - name: Saturday Morning Walking Meditation
+    heading: Saturday Morning Walking Meditation
     day: Saturday
     time: 8:30 am
     location: Greensprings Interpretive Trail, parking lot behind Jamestown High
       School on Eagle Way
     description: >-
-      Led by Darrell Key.
+      Saturday Mornings at 8:30 am.  
+
+      ***Led by Darrell Key.***
 
 
       **New Location**
@@ -143,6 +160,8 @@ groups:
 
       [Map of the Greensprings Interpretive Trail parking
       lot](https://maps.app.goo.gl/35rnBgp4uPy7KssE8)
+    image: /images/walking-meditation.jpg
+    more: |-
+      If you haven’t used Zoom before, don’t worry – it’s easy! But you may want to log in about 10 minutes early to get yourself all set up.
 
-
-      ![Walking meditation](/images/walking-meditation.jpg)
+      [Click here for a brief video tutorial](https://williamsburgbuddhistsangha.us17.list-manage.com/track/click?u=fc1ad0b20592452e7a0fbf777&id=2c6d3eaedd&e=a2c743c6f4) that will walk you through logging in for the first time.

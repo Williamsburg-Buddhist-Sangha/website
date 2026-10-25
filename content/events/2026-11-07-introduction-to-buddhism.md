@@ -4,7 +4,8 @@ date: 2026-11-07
 end_date: 2026-11-21
 time: 9:30 am – 12:30 pm
 location: Williamsburg Unitarian Universalist Campus, Room 108
-register_url: https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578589192382
+register_url: https://wbs.breezechms.com/form/c949e886383243333793463027625657138957858919238246
+register_label: Join Waiting LIst
 featured: true
 summary: A two-part introduction course for beginners, exploring Buddhist
   teachings and practice. Saturdays, November 7 and 21.
@@ -27,6 +28,4 @@ What we’ll explore:
 
 Expect teaching, group conversation, and guided practice. No experience needed.
 
-Space is limited. Reserve your spot today:
-
-[Register](https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578589192382)
+This class is full. Join the waiting list and we will contact you if a spot opens:
