@@ -1,0 +1,21 @@
+/* Classic 40: WordPress embed card (production embeds /<page>/embed/ in an iframe; values from
+   WordPress wp-embed-template CSS). */
+.video-container { margin: 0 0 1em; }
+.et-l .wp-embed {
+	padding: 25px; font-size: 14px; font-weight: 400; line-height: 1.5; color: #646970; background: #fff;
+	border: 1px solid #dcdcde; box-shadow: 0 1px 1px rgba(0, 0, 0, .05); overflow: auto;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	max-width: 600px; box-sizing: border-box;
+}
+.et-l .wp-embed a { color: #646970; text-decoration: none; font-weight: inherit; padding: 0; line-height: inherit; }
+.et-l .wp-embed a:hover { text-decoration: underline !important; }
+.et-l .wp-embed p { margin: 0; padding: 0; font-size: 14px; }
+.et-l .wp-embed p.wp-embed-heading { margin: 0 0 15px; font-weight: 600; font-size: 22px; line-height: 1.3; font-family: inherit; }
+.et-l .wp-embed-heading a { color: #2c3338; }
+.et-l .wp-embed-footer { display: table; width: 100%; margin-top: 30px; }
+.et-l .wp-embed-site-title { display: table-cell; font-weight: 600; line-height: 1.78571428; }
+.et-l .wp-embed-site-title a { position: relative; display: inline-block; padding-left: 35px; }
+.et-l .wp-embed-site-icon { position: absolute; top: 50%; left: 0; transform: translateY(-50%); height: 25px; width: 25px; border: 0; }
+.et-l .wp-embed-meta { display: table-cell; text-align: right; white-space: nowrap; vertical-align: middle; }
+.et-l .wp-embed-share { display: inline-block; width: 20px; height: 20px; color: #646970; line-height: 0; }
+.et-l .wp-embed-share svg { display: block; }

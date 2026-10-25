@@ -1,0 +1,128 @@
+/* Classic 00: Charitas Lite theme base (production wp-content/themes/charitas-lite/style.css v3.2,
+   GPL-3.0, WPlook Studio) with the site's Customizer colours (inline <style> on production:
+   links/headings #005a72, toolbar + mobile bar #e87d0d). Only the rules production renders. */
+
+/* Reset (Eric Meyer / html5doctor) */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+acronym, address, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, strike, strong, sub, sup, tt,
+var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+th, td {
+	border: 0; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit;
+	margin: 0; outline: 0; padding: 0; vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+:focus { outline: 0; }
+body { background: #fff; line-height: 1; margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { font-weight: normal; text-align: left; }
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+a img { border: 0; }
+
+/* Default colours: theme defaults, then the Customizer block (same order as production) */
+a, a:visited { color: #e53b51; }
+a:focus, a:active, a:hover { color: #c9253a; }
+h1, h2, h3, h4, h5, h6 { color: #e53b51; }
+#toolbar, .mean-container .mean-bar { background: #000; }
+a, a:visited { color: #005a72; }
+.teaser-page-list, #footer-widget-area, ul.nav-menu ul a:hover, .nav-menu ul ul a:hover { background: #005a72; }
+h1, h2, h3, h4, h5, h6, .nav-menu .current_page_item > a, .nav-menu .current_page_ancestor > a,
+.nav-menu .current-menu-item > a, .nav-menu .current-menu-ancestor > a { color: #005a72; }
+.entry-content blockquote { border-left: 3px solid #005a72; }
+#toolbar, .mean-container .mean-bar { background: #e87d0d; }
+
+.aligncenter { clear: both; display: block; margin-left: auto; margin-right: auto; }
+.alignleft { float: left; }
+.alignright { float: right; }
+
+/* Global */
+body, input, textarea {
+	color: #3b3b3d; font-size: 14px; font-family: 'Arimo', sans-serif; line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+.clear { clear: both; }
+.fleft { float: left; }
+.fright { float: right; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 { clear: both; font-family: 'Archivo Narrow', sans-serif; }
+hr { background-color: #ccc; border: 0; height: 1px; margin-bottom: 1.5em; }
+h1 { font-size: 30px; }
+h2 { font-size: 24px; }
+h3 { font-size: 22px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+/* Text elements */
+p { margin-bottom: 1.5em; font-size: 15px; }
+ul, ol { margin: 0 0 1.5em 2.5em; }
+ul { list-style: square; }
+ol { list-style-type: decimal; }
+ul ul, ol ol, ul ol, ol ul { margin-bottom: 0; }
+dt { font-weight: bold; }
+strong, b { font-weight: bold; }
+cite, em, i { font-style: italic; }
+blockquote { font-style: italic; margin: 0 3em; }
+blockquote em, blockquote i, blockquote cite { font-style: normal; }
+code, kbd { font: 13px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace; background: #f3f3f3; padding: 2px 5px; display: block; }
+ins { background: #fff9c0; text-decoration: none; }
+sup, sub { font-size: 10px; height: 0; line-height: 1; position: relative; vertical-align: baseline; }
+sup { bottom: 1ex; }
+sub { top: .5ex; }
+
+/* Images */
+p img { margin-bottom: 0.5em; }
+a img { display: block; }
+figure { float: left; margin: 0; padding: 0; position: relative; }
+figure img { border-radius: 2px; width: 100%; height: auto; display: block; }
+.entry-content figure { margin-bottom: 48px; }
+img { max-width: 100%; height: auto; }
+
+/* Inner-page title band */
+.teaser-page-list { min-height: 150px; width: 100%; }
+.page-title {
+	color: #fff; border: 2px solid #fff; padding: 10px 20px; display: inline-block;
+	animation: classic-fade-in-down 1s both;
+}
+.teaser-page-list .page-title { margin: 40px 0; }
+.teaser-page-list #rootline { margin-top: 64px; }
+#rootline { font-size: 14px; text-align: right; color: #fff; }
+#rootline a { color: #fff; text-decoration: none; }
+#rootline a:hover { color: #fff; text-decoration: underline; }
+@keyframes classic-fade-in-down { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .page-title { animation: none; } }
+@media (max-width: 1200px) { .page-title { font-size: 26px; } }
+@media (max-width: 768px) {
+	.teaser-page-list .grid_10 { text-align: center !important; width: 98% !important; }
+	.teaser-page-list .grid_10 .page-title { text-align: center !important; margin-bottom: 0; }
+	.teaser-page-list .grid_6 { width: 98% !important; }
+	.teaser-page-list .grid_6 #rootline { text-align: center !important; padding-bottom: 20px; margin-top: 40px !important; }
+}
+
+/* Content */
+embed, iframe, object, video { max-width: 100%; }
+#main { background: #fff; }
+#main .inner { padding: 95px 0; }
+.entry-content table { border-bottom: 1px solid #ddd; margin: 0 0 1.625em; width: 100%; }
+.entry-content th { color: #666; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; line-height: 2.6em; }
+.entry-content td { border-top: 1px solid #ddd; padding: 6px 10px 6px 0; }
+.entry-content blockquote { padding-left: 24px; font-size: 20px; }
+.entry-content blockquote p { font-size: 20px; }
+
+/* 960 grid (vendors.min.css) */
+.container_16 { width: 92%; margin-left: auto; margin-right: auto; max-width: 1184px; }
+.grid_4, .grid_5, .grid_6, .grid_8, .grid_10, .grid_11, .grid_16 { display: inline; float: left; position: relative; margin-left: 1%; margin-right: 1%; }
+.container_16 .grid_4 { width: 23%; }
+.container_16 .grid_5 { width: 29.25%; }
+.container_16 .grid_6 { width: 35.5%; }
+.container_16 .grid_8 { width: 48%; }
+.container_16 .grid_10 { width: 60.5%; }
+.container_16 .grid_11 { width: 66.75%; }
+.container_16 .grid_16 { width: 98%; }
+.container_16 .suffix_1 { padding-right: 6.25%; }
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+@media (max-width: 640px) {
+	.container_16 .grid_4, .container_16 .grid_5, .container_16 .grid_6, .container_16 .grid_8, .container_16 .grid_10, .container_16 .grid_11, .container_16 .grid_16 { width: 98%; }
+}

@@ -1,0 +1,148 @@
+/* Classic 20: Divi Builder (plugin) look for page bodies. Production scopes these rules under
+   ".et-db #et-boc .et-l" so they beat the theme; Classic scopes them under ".et-l".
+   Source: inline divi-builder-style / divi-builder-dynamic-critical CSS on production. */
+.et-l { text-shadow: none; }
+/* Reset; :where() keeps it at class specificity, so the Divi class rules below (later in the
+   file) override it as they do on production, while it still beats the theme's element rules. */
+.et-l :where(a, blockquote, div, em, h1, h2, h3, h4, h5, h6, hr, iframe, img, li, ol, p, span, strong,
+ul, form, label, input, textarea, video, object) {
+	text-align: inherit; margin: 0; padding: 0; border: none; outline: 0; vertical-align: baseline;
+	background: transparent; letter-spacing: normal; color: inherit; box-shadow: none;
+	text-shadow: inherit; border-radius: 0; transition: none;
+}
+.et-l h1, .et-l h2, .et-l h3, .et-l h4, .et-l h5, .et-l h6 {
+	line-height: 1em; padding-bottom: 10px; font-weight: 500; text-transform: none; font-style: normal;
+}
+.et-l ol, .et-l ul { list-style: none; text-align: inherit; }
+.et-l ol li, .et-l ul li { padding-left: 0; background: none; margin-left: 0; }
+.et-l blockquote { quotes: none; }
+.et-l blockquote:after, .et-l blockquote:before { content: none; }
+.et-l a { text-decoration: none !important; }
+.et-l p { padding-bottom: 1em; color: inherit !important; }
+.et-l p:last-of-type { padding-bottom: 0; }
+.et-l img { max-width: 100%; height: auto; }
+.et-l a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+.et_pb_module a { color: #2ea3f2; }
+.et_pb_module h2 a { color: inherit !important; }
+.et_pb_module ul { overflow: visible; }
+.et_pb_module h3 { display: block !important; }
+.et_pb_module a, .et_pb_module h1 a, .et_pb_module h2 a, .et_pb_module h3 a, .et_pb_module h4 a,
+.et_pb_module h5 a, .et_pb_module h6 a {
+	line-height: 1em; padding-bottom: 10px; font-weight: 500; text-transform: none; font-style: normal;
+}
+/* Production editors put bold/italic inside links (<a><strong>); the Pages CMS editor writes them
+   outside (<strong><a>), so a link inherits its wrapper's weight/style instead of Divi's 500/normal. */
+.et_pb_module :is(strong, b) > a { font-weight: inherit; }
+.et_pb_module :is(em, i) > a { font-style: inherit; }
+.et_pb_module blockquote { margin: 20px 0 30px; padding-left: 20px; border-left: 5px solid; border-color: #2ea3f2; font-style: normal; }
+.et_pb_module img { max-width: 100%; margin: 0; border: none; padding: 0; background: none; border-radius: 0; }
+.et_pb_image img { width: inherit; }
+.et_pb_image a { line-height: 0; padding-bottom: 0; }
+.et_pb_text * { letter-spacing: inherit; }
+.et_pb_section * { -webkit-font-smoothing: antialiased; }
+.et_pb_module ul { margin: 0; }
+.et_pb_module li { list-style: none; }
+.et_pb_module h1, .et_pb_module h2, .et_pb_module h3, .et_pb_module h4, .et_pb_module h5, .et_pb_module h6 { margin: 0; text-align: inherit; }
+.et_pb_module p { margin: 0; text-align: inherit; }
+.et_pb_module img { display: inline; }
+.et_pb_text ol, .et_pb_text ul { margin-top: 15px; margin-bottom: 15px; margin-left: 25px; }
+.et_pb_text ul li { list-style: disc; }
+.et_pb_text ol li { list-style: decimal; }
+.et_pb_column_1_3 h1, .et_pb_column_2_5 h1 { font-size: 26px; }
+.et_pb_column_1_3 h2, .et_pb_column_2_5 h2 { font-size: 23px; }
+.et_pb_column_1_3 h3, .et_pb_column_2_5 h3 { font-size: 20px; }
+.et_pb_column_1_3 h4, .et_pb_column_2_5 h4 { font-size: 18px; }
+.et_pb_column_1_3 h5, .et_pb_column_2_5 h5 { font-size: 16px; }
+.et_pb_column_1_3 h6, .et_pb_column_2_5 h6 { font-size: 15px; }
+.et_pb_module.et_pb_text_align_left { text-align: left; }
+.et_builder_inner_content { position: relative; z-index: 1; }
+
+/* Section / row / column */
+.et_pb_section { position: relative; background-color: transparent; margin-bottom: 0; }
+.et_pb_row { width: 80%; max-width: 1080px; margin: auto; position: relative; }
+.et_pb_section .et_pb_row { width: 100%; }
+.et_pb_row:after { content: ""; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; width: 0; }
+.et_pb_column { float: left; position: relative; z-index: 2; min-height: 1px; }
+.et_pb_column .et_pb_module { margin-bottom: 30px; }
+.et_pb_row .et_pb_column .et_pb_module:last-child { margin-bottom: 0; }
+.et_pb_row .et_pb_column:last-child { margin-right: 0 !important; }
+@media (min-width: 981px) {
+	.et_pb_section { padding: 4% 0; }
+	.et_pb_row { padding: 2% 0; }
+	.et_pb_gutters3 .et_pb_column { margin-right: 5.5%; }
+	.et_pb_gutters3 .et_pb_column_4_4 { width: 100%; }
+	.et_pb_gutters3 .et_pb_column_4_4 .et_pb_module { margin-bottom: 2.75%; }
+	.et_pb_gutters3 .et_pb_column_2_3 { width: 64.833%; }
+	.et_pb_gutters3 .et_pb_column_2_3 .et_pb_module { margin-bottom: 4.242%; }
+	.et_pb_gutters3 .et_pb_column_3_5 { width: 57.8%; }
+	.et_pb_gutters3 .et_pb_column_3_5 .et_pb_module { margin-bottom: 4.758%; }
+	.et_pb_gutters3 .et_pb_column_2_5 { width: 36.7%; }
+	.et_pb_gutters3 .et_pb_column_2_5 .et_pb_module { margin-bottom: 7.493%; }
+	.et_pb_gutters3 .et_pb_column_1_3 { width: 29.6667%; }
+	.et_pb_gutters3 .et_pb_column_1_3 .et_pb_module { margin-bottom: 9.27%; }
+	.et_pb_row .et_pb_column .et_pb_module:last-child { margin-bottom: 0; }
+}
+@media (max-width: 980px) {
+	.et_pb_section { padding: 50px 0; }
+	.et_pb_row { max-width: 1080px; padding: 30px 0; }
+	.et_pb_column { width: 100%; margin-bottom: 30px; }
+	.et_pb_row .et_pb_column:last-child { margin-bottom: 0; }
+}
+
+/* Text module */
+.et_pb_text { word-wrap: break-word; }
+.et_pb_text ol, .et_pb_text ul { padding-bottom: 1em; }
+.et_pb_text > :last-child { padding-bottom: 0; }
+.et_pb_text_inner { position: relative; }
+.et_clickable { cursor: pointer; }
+
+/* Divider module */
+.et_pb_space { box-sizing: content-box; height: 23px; }
+.et_pb_divider_internal { display: inline-block; width: 100%; }
+.et_pb_divider { margin: 0 0 30px; position: relative; }
+.et_pb_divider:before {
+	content: ""; width: 100%; height: 1px; border-top: 1px solid rgba(0, 0, 0, .1);
+	position: absolute; left: 0; top: 0; z-index: 10;
+}
+.et_pb_divider:after, .et_pb_space:after { content: ""; display: table; }
+@media (min-width: 981px) {
+	.et_pb_gutters3 .et_pb_column_4_4 .et_pb_divider { margin-bottom: 2.75%; }
+}
+
+/* Image module */
+.et_pb_image { margin-left: auto; margin-right: auto; line-height: 0; }
+.et_pb_image .et_pb_image_wrap { display: inline-block; position: relative; max-width: 100%; }
+.et_pb_image .et_pb_image_wrap img { position: relative; }
+.et_pb_image img { position: relative; }
+
+/* Button (et_pb_button, light background layout). Body links alone in a paragraph render as
+   a.btn.btn--primary (layouts/_partials/content.html). */
+.et-l .btn, .et-l .et_pb_button {
+	display: inline; color: #2ea3f2; font-size: 20px; font-weight: 500; padding: .3em 1em;
+	line-height: 1.7em !important; background-color: transparent; position: relative;
+	border: 2px solid; border-radius: 3px; transition-duration: .2s; transition-property: all !important;
+	text-decoration: none !important;
+}
+/* Divi's ".et_pb_module a { padding-bottom: 10px }" wins over a.et_pb_button on production. */
+.et-l a.btn, .et-l a.et_pb_button { padding-bottom: 10px; }
+.et-l .btn:hover, .et-l .et_pb_button:hover {
+	border: 2px solid transparent; padding: .3em 2em 10px .7em; background-color: rgba(0, 0, 0, .05);
+}
+/* Divi's hover arrow: ETmodules glyph "5" (arrow_carrot-right). The ETmodules font is not
+   redistributable, so the same chevron is drawn with an inline SVG mask. */
+.et-l .btn:after, .et-l .et_pb_button:after {
+	content: ""; position: absolute; opacity: 0; margin-left: -1em; width: 1em; height: 1em;
+	font-size: 32px; line-height: 1em; top: 50%; transform: translateY(-50%); transition: all .2s;
+	background-color: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M12.6 9.4 19.2 16l-6.6 6.6-1.6-1.6 5-5-5-5z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M12.6 9.4 19.2 16l-6.6 6.6-1.6-1.6 5-5-5-5z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.et-l .btn:hover:after, .et-l .et_pb_button:hover:after { opacity: 1; margin-left: 0; }
+/* A body button: production shows it either inline in a centred paragraph (Membership, Contact)
+   or as a centred button module (Bylaws, Support, Events; see 30-pages.css). */
+.et_pb_text_inner > .et_pb_button_module_wrapper { padding-bottom: 15px; }
+.et_pb_text_inner > .et_pb_button_module_wrapper:last-child { padding-bottom: 0; }
+.et_pb_button_module_wrapper.et_pb_button_alignment_left { text-align: left; }
+.et_pb_button_module_wrapper.et_pb_button_alignment_center { text-align: center; }
+.et_pb_button_module_wrapper.et_pb_module > a { display: inline-block; }

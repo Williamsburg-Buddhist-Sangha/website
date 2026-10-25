@@ -1,0 +1,142 @@
+/* Classic 30: per-page Divi module design (production "et-builder-module-design-deferred"
+   inline CSS + inline styles pasted into the WordPress editor), mapped onto Classic markup.
+   Colours: green #337621, amber #E09900. */
+
+/* Lato text modules with green h1 / amber h2 (home left column, groups, events, membership).
+   Other pages keep the theme/Divi defaults: Arimo text, Archivo Narrow headings in the text colour. */
+.is-home .home-text, .page-meditation-groups .group,
+.is-events .event { font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-size: 1em; }
+.is-home .home-text h1, .page-meditation-groups .group h1, .is-events .event h1, .page-membership .et_pb_text h1 {
+	font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-size: 2em; color: #337621 !important; line-height: 1.25em;
+}
+.is-home .home-text h2, .page-meditation-groups .et_pb_text h2 {
+	font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-weight: 700; font-size: 1.5em; color: #E09900 !important; line-height: 1.25em;
+}
+.is-home .home-text h2 { line-height: 1em; }
+.page-meditation-groups .et_pb_text:first-child h2 { font-weight: 500; }
+.is-home .home-text h3, .page-meditation-groups .et_pb_text h3 { font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-weight: 700; font-size: 1em; line-height: 1.5em; }
+.is-home .home-text h4, .page-meditation-groups .group h4 { font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-style: italic; font-size: 1em; }
+.is-home .et_pb_divider:before, .page-meditation-groups .et_pb_divider:before { border-top-width: 2px; }
+.classic .et_pb_divider:before { border-top-color: #E09900; }
+
+/* Homepage (page-id-1031) */
+.is-home .home-section { min-height: 278px; margin-top: -81px; max-width: 100%; }
+.is-home .et_pb_row_1.et_pb_row, .is-home .et_pb_row_0.et_pb_row { margin-top: -1px !important; margin-right: auto !important; margin-left: auto !important; }
+.is-home .home-text { color: #000 !important; }
+.is-home .home-text h2 { color: #E09900 !important; font-weight: 700; }
+.is-home .home-text h4 { color: #000 !important; }
+.is-home .home-main > .home-text:first-child ul { font-size: 17px; }
+.is-home .home-text h5 { font-family: 'Archivo Narrow', sans-serif; font-size: 18px; color: inherit; margin-top: 37.5px; }
+/* production: the last day paragraph keeps its 15px padding and an empty 22.5px paragraph follows */
+.is-home .home-boxes .et_pb_divider { margin-bottom: 1px !important; }
+.is-home .home-boxes .et_pb_text { font-family: 'Arimo', sans-serif; }
+.is-home .home-box h1 { font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-size: 2em; color: #337621 !important; line-height: 1em; }
+.is-home .home-box-2 h1 { font-size: 1.5em; }
+.is-home .home-box-2 p { font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-size: 15px; color: #3b3b3d; }
+.is-home .home-box h1 a { color: inherit; }
+.is-home .home-box--small { width: 77%; }
+.is-home .home-box-3 { padding-top: 0 !important; margin-top: 0 !important; }
+.is-home .home-box--small h2 { font-family: 'Archivo Narrow', sans-serif; font-size: 23px; font-weight: 500; color: inherit !important; line-height: 1em; }
+.is-home .home-box__button { text-align: center; }
+.is-home .et-l .home-box .et_pb_button { color: #337621 !important; font-weight: 600 !important; background-color: rgba(51, 118, 33, 0.14); transition: all 300ms ease 0ms; }
+/* Box 3: the button sits inline in a centred paragraph of the text module. */
+.is-home .home-box-3 .home-box__button .et_pb_button { display: inline; }
+/* Box 4: production starts with an empty h3 (10px) and puts the button in a separate button
+   module (full column width, 7.493% below, centred, shifted -33px). */
+.is-home .home-box-4 .et_pb_text_inner { padding-top: 10px; }
+.is-home .home-box-4 .home-box__button { width: calc(100% / .77); margin-top: 9.731%; padding-bottom: 0; }
+.is-home .home-box-4 .et_pb_button { transform: translateX(-33px) translateY(1px); }
+/* Box 2: production's WordPress embed iframe is 200px high. */
+.is-home .video-container { height: 200px; }
+
+/* Meditation groups (page-id-15) */
+.page-meditation-groups .et_pb_section_0 { margin-top: 0; }
+.page-meditation-groups .et_pb_row_0.et_pb_row { margin-top: 0 !important; }
+.page-meditation-groups .et_pb_text:first-child { padding-bottom: 23px !important; }
+.page-meditation-groups .et_pb_text:first-child h2 { font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-size: 1.5em; color: #E09900 !important; line-height: 1.25em; }
+.page-meditation-groups .et_pb_text:first-child h3 { font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif; font-size: 1em; line-height: 1.25em; }
+.page-meditation-groups .et_pb_text table.roster { width: 366px; float: left; }
+.page-meditation-groups .et_pb_text table.roster td:first-child { width: 127.367px; }
+.page-meditation-groups .et_pb_text table.roster td + td { width: 222.633px; }
+.page-meditation-groups .group-image { text-align: left; margin-left: 0; }
+.page-meditation-groups .group-thursday-morning-book-study-and-meditation-image { width: 48%; max-width: 47%; }
+.page-meditation-groups .group-thursday-morning-book-study-and-meditation-image img { height: 199px; min-height: 228px; max-height: 237px; width: auto; }
+/* Roster tables float left in production; the module still ends ~34px below them (empty paragraphs). */
+.page-meditation-groups .group { display: flow-root; }
+.page-meditation-groups .et_pb_text table.roster { margin-bottom: 34px; }
+.page-meditation-groups .group-wednesday-evening-meditation table.roster { width: 400px; }
+.page-meditation-groups .group--same-day h1 { font-size: 1.5em; line-height: 1em; }
+/* production: two empty h1 (10px each) above the Monday heading */
+.page-meditation-groups .group-monday-evening-meditation { padding-top: 20px; }
+.page-meditation-groups .et_pb_text:first-child h4 { font-family: 'Archivo Narrow', sans-serif; font-size: 20px; }
+.page-meditation-groups .et_pb_text:first-child h4 em { color: #000; }
+
+/* Events (page-id-23) */
+.is-events .et_pb_section_0 { padding-top: 0; padding-bottom: 2px; width: 100%; margin-left: 0 !important; margin-right: auto !important; }
+.is-events .events-row { width: 100%; max-width: none; }
+.is-events .events-main h1 { font-size: 2em; color: #337621 !important; }
+.is-events .events-side h1 { font-family: 'Archivo Narrow', sans-serif; font-size: 1.5em; line-height: 1em; color: #337621 !important; }
+.is-events .events-main h1 { line-height: 1em; }
+.is-events .et_pb_button_module_wrapper { text-align: center; }
+.is-events .events-side h2 { font-family: 'Times New Roman', Georgia, "Times New Roman", serif; font-weight: 700; font-style: italic; }
+.is-events .et-l .et_pb_button { color: #337621 !important; font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif !important; font-weight: 600 !important; background-color: rgba(51, 118, 33, 0.14); transition: all 300ms ease 0ms; }
+
+/* Meet Our Teachers (page-id-1337), Board of Directors (page-id-2101): photo floated left */
+.person-row { padding: 2% 0; }
+.person-row:after { content: ""; display: block; clear: both; }
+.person__photo { margin: 2% 2% 2% 0 !important; float: left; text-align: left; }
+.page-board-of-directors .person__photo { margin: 0 2% 1% 0 !important; }
+.person .has-medium-font-size { font-size: 20px !important; }
+.person + .et_pb_divider { clear: both; }
+
+/* Contact Us (page-id-4): the newsletter part is a second row whose modules are 77% wide;
+   production's empty headings/paragraphs add the paddings below. */
+.page-contact .et_pb_divider:before { border-top-width: 3px; }
+.page-contact .et_pb_column > .et_pb_divider, .page-contact .et_pb_column > .et_pb_text:not(:first-child) { width: 77%; }
+.page-contact .et_pb_column > .et_pb_text:first-child { padding-bottom: 40px; }
+.page-contact .et_pb_column > .et_pb_text:first-child + .et_pb_divider { margin-top: 9.8px; }
+.page-contact .et_pb_column > .et_pb_text:nth-child(3) { padding-top: 37.5px; }
+.page-contact .et_pb_column > .et_pb_text:nth-child(5) { padding-top: 10px; }
+.page-contact .et_pb_text_inner > .et_pb_button_module_wrapper { padding-bottom: 40px; }
+
+/* Resources (page-id-76) */
+.page-resources .et_pb_divider:before { border-top-width: 3px; }
+
+/* Bylaws (page-id-3): orange rounded buttons, each its own centred button module */
+.page-bylaws .et_pb_text_inner > .et_pb_button_module_wrapper, .page-support .et_pb_text_inner > .et_pb_button_module_wrapper { padding-bottom: 0; margin-bottom: 2.75%; }
+.page-bylaws .et_pb_button_module_wrapper > a, .page-support .et_pb_button_module_wrapper > a { display: inline-block; }
+.page-bylaws .et-l .btn { color: #fff !important; border-radius: 16px !important; font-size: 15px; font-weight: 600 !important; background-color: #e87d0d; transition: all 300ms ease 0ms; }
+
+/* Support (page-id-162): flat orange button with shadow, no hover arrow */
+.page-support .et-l .btn { color: #fff !important; border-width: 0 !important; border-radius: 10px !important; font-size: 16px; font-weight: 700 !important; background-color: #e87d0d; box-shadow: 0 12px 18px -6px rgba(0, 0, 0, 0.3); transition: all 300ms ease 0ms; }
+.page-support .et-l .btn, .page-support .et-l .btn:hover { padding: 0.3em 1em !important; }
+.page-support .et-l .btn:before, .page-support .et-l .btn:after { display: none !important; }
+
+/* Teacher Code of Ethics (page-id-2405) */
+.page-teacher-code-of-ethics .et_pb_section_0 { padding-bottom: 38px; }
+
+/* Body images (Markdown image alone in a paragraph -> figure) behave like Divi image modules */
+.et-l .et_pb_text_inner > figure { float: none; margin: 0 0 1em; }
+.et-l .et_pb_text_inner > figure img { width: auto; max-width: 100%; border-radius: 0; }
+.is-home .home-box-4 .et_pb_button { display: inline-block; }
+/* People: production gives every person its own Divi row; the name paragraph follows an empty
+   20px paragraph and is followed by an empty 15px one. */
+.person-row:first-child { padding-top: 0; }
+.person-row:last-child { padding-bottom: 0; }
+.et-l .person .person__name { margin-top: 20px; padding-bottom: 35px; }
+
+/* Membership (page-id-552): Arimo text; Lato green h1 with Divi's 1em line-height */
+.page-membership .et_pb_text h1 { line-height: 1em; }
+
+/* Inline colours pasted into production's editor, reproduced where the Markdown shape is unique:
+   "New Location" (bold alone in its paragraph) is red; the groups' italic schedule notes are grey 16px. */
+.is-home .home-text p > strong:only-child,
+.page-meditation-groups .group-saturday-morning-walking-meditation p > strong:only-child { color: #ff0000; }
+.page-meditation-groups .group p > em:only-child { color: #808080; font-size: 16px; line-height: 24px; }
+.page-meditation-groups .et_pb_text:first-child p em { color: #000; }
+
+/* Vision, Mission, and Values (page-id-543): production has an empty paragraph (15px) between
+   all blocks, and from the second list on every bullet is its own list (74px apart). */
+.page-vision-mission-and-values .et_pb_text_inner > * + p { padding-top: 15px; }
+.page-vision-mission-and-values .et_pb_text_inner > * + ul { margin-top: 30px; }
+.page-vision-mission-and-values .et_pb_text_inner > ul ~ ul li + li { margin-top: 74px; }
