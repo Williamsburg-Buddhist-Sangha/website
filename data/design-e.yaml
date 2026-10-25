@@ -1,0 +1,19 @@
+first_visit:
+  heading: Your first visit
+  lede: Curious about meditation, but not sure you belong? You do. Here is what to
+    expect.
+  points:
+    - title: No experience needed
+      text: No prior training or knowledge is needed. Even in the book group, we read
+        the book together during the meeting.
+    - title: Nothing to bring
+      text: We usually sit in chairs. If you prefer the floor, bring your own cushion.
+    - title: No cost
+      text: Our groups and events are free. Donations are welcome, never expected.
+    - title: Come as you are
+      text: Every group is open to everyone, from first-timers to long-time
+        practitioners.
+  button: See this week's groups
+blessing:
+  text: May all beings be happy. May all beings be at ease.
+  source: from the Karaniya Metta Sutta

@@ -1,0 +1,6 @@
+{{- /* Design E only: small progressive-enhancement script (scroll reveal, header shadow).
+       It does nothing unless html[data-design="e"]; other designs are unaffected. */ -}}
+{{- with resources.Get "js/design-e.js" }}
+{{- $js := . | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end }}

@@ -1,0 +1,25 @@
+{{- /* Design E only: "Your first visit" section on the homepage (data/design-e.yaml).
+       Hidden in every other design by the .only-e rule in base.css. */ -}}
+{{- with (index site.Data "design-e").first_visit }}
+{{- $groupsHref := relURL "meditation-groups/" }}
+{{- with site.GetPage "/meditation-groups" }}{{ $groupsHref = .RelPermalink }}{{ end }}
+<section class="section only-e e-first-visit" aria-labelledby="first-visit-title">
+  <div class="container e-first-visit__inner">
+    <div class="e-first-visit__head">
+      <h2 id="first-visit-title" class="section-title e-first-visit__title">{{ .heading }}</h2>
+      {{- with .lede }}<p class="e-first-visit__lede">{{ . }}</p>{{ end }}
+      {{- with .button }}<p class="e-first-visit__more"><a class="btn btn--primary" href="{{ $groupsHref }}">{{ . }}</a></p>{{ end }}
+    </div>
+    {{- with .points }}
+    <ul class="e-first-visit__list" role="list">
+      {{- range . }}
+      <li class="e-first-visit__item">
+        <h3 class="e-first-visit__item-title">{{ .title }}</h3>
+        <p class="e-first-visit__item-text">{{ .text }}</p>
+      </li>
+      {{- end }}
+    </ul>
+    {{- end }}
+  </div>
+</section>
+{{- end }}

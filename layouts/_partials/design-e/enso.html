@@ -1,0 +1,2 @@
+{{- /* Inline copy of static/images/e/enso.svg so it takes currentColor. */ -}}
+{{- with os.ReadFile "static/images/e/enso.svg" }}{{ . | safeHTML }}{{ end -}}

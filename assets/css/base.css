@@ -1196,3 +1196,7 @@ html:not(.js) .design-switcher { display: none; }
 .prose, .group__desc, .person__bio, .callout { overflow-wrap: break-word; }
 
 .prose a, .group__desc a, .person__bio a, .callout a, .facts a { overflow-wrap: anywhere; }
+
+/* Design-E-only markup (layouts/_partials/design-e/*): hidden unless design E is active. */
+
+html:not([data-design="e"]) .only-e { display: none !important; }

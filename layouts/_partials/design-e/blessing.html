@@ -1,0 +1,10 @@
+{{- /* Design E only: a short line of dharma text before the footer (data/design-e.yaml). */ -}}
+{{- with (index site.Data "design-e").blessing }}
+<section class="section only-e e-blessing" aria-label="A blessing">
+  <div class="container e-blessing__inner">
+    <span class="e-enso" aria-hidden="true">{{ partial "design-e/enso.html" . }}</span>
+    <p class="e-blessing__text">{{ .text }}</p>
+    {{- with .source }}<p class="e-blessing__source">{{ . }}</p>{{ end }}
+  </div>
+</section>
+{{- end }}

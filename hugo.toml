@@ -39,8 +39,8 @@ buildFuture = true
 
 [[params.designs]]
   id = 'e'
-  name = 'Sanctuary'
-  fonts = ''
+  name = 'First Light'
+  fonts = 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap'
 
 [[params.designs]]
   id = 'f'
