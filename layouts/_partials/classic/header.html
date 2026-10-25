@@ -1,0 +1,40 @@
+{{- /* Header (production header#branding > #sticky_navigation): logo + main menu.
+       Production menu: a top-level "Support" item first, then the main menu.
+       Teacher Resources (password-protected on production) is not in the menu.
+       Mobile (<= 768px, meanmenu): .mean-bar with a hamburger. Without JS the
+       hamburger is a <details> disclosure, so the menu still opens. */ -}}
+{{- $page := . -}}
+{{- $support := site.GetPage "/support" -}}
+{{- $items := slice -}}
+{{- with $support }}{{ $items = $items | append (dict "name" "Support" "href" .RelPermalink "current" (eq $page.RelPermalink .RelPermalink) "ancestor" false "children" slice) }}{{ end -}}
+{{- range site.Menus.main -}}
+  {{- $kids := slice -}}
+  {{- range .Children -}}
+    {{- $kids = $kids | append (dict "name" .Name "href" (partial "menu-href.html" .) "current" ($page.IsMenuCurrent "main" .)) -}}
+  {{- end -}}
+  {{- $items = $items | append (dict "name" .Name "href" (partial "menu-href.html" .) "current" ($page.IsMenuCurrent "main" .) "ancestor" ($page.HasMenuCurrent "main" .) "children" $kids) -}}
+{{- end -}}
+<header id="branding" class="site-header" role="banner">
+	<div id="sticky_navigation">
+		<div class="container_16">
+			<div class="hgroup fleft grid_5">
+				<h1 id="site-title">
+					<a href="{{ relURL "" }}" title="{{ site.Title }} - " rel="home">
+						<img src="{{ partial "url.html" site.Params.logo }}"{{ partial "img-size.html" site.Params.logo }} alt="{{ site.Title }}">
+					</a>
+				</h1>
+			</div>
+			<nav role="navigation" class="site-navigation main-navigation grid_11" id="site-navigation" aria-label="Main">
+				<div class="menu-main-menu-container">{{ partial "classic/menu-list.html" (dict "id" "menu-main-menu" "class" "nav-menu" "items" $items) }}</div>
+			</nav>
+			<!-- Mobile navigation (meanmenu look) -->
+			<div class="grid_16 mob-nav mean-container">
+				<details class="mean-bar">
+					<summary class="meanmenu-reveal" aria-label="Menu"><span></span><span></span><span></span></summary>
+					<nav class="mean-nav" aria-label="Main (mobile)">{{ partial "classic/menu-list.html" (dict "items" $items "mobile" true) }}</nav>
+				</details>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</header>

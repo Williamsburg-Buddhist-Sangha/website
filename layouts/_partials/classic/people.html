@@ -1,0 +1,19 @@
+{{- /* People (data/people.yaml <key>), production layout per person: photo 150 px (floated),
+       <p><strong>Name</strong><br>Role</p>, bio, divider. Context: dict "page" "key". */ -}}
+{{- $page := .page -}}
+{{- $out := "" -}}
+{{- with index site.Data.people .key -}}
+  {{- range $i, $p := . -}}
+    {{- $m := "" -}}
+    {{- with $p.photo -}}
+      {{- $m = printf "<div class=\"et_pb_module et_pb_image person__photo\"><span class=\"et_pb_image_wrap\"><img src=\"%s\"%s alt=\"%s\" loading=\"lazy\" decoding=\"async\"></span></div>\n" (partial "url.html" .) (partial "img-size.html" .) ($p.name | htmlEscape) -}}
+    {{- end -}}
+    {{- $t := printf "<p class=\"has-medium-font-size person__name\"><strong>%s</strong>%s</p>\n" ($p.name | htmlEscape) (cond (ne ($p.role | default "") "") (printf "<br>%s" ($p.role | htmlEscape)) "") -}}
+    {{- with $p.bio }}{{ $t = printf "%s%s" $t ($page.RenderString (dict "display" "block") .) }}{{ end -}}
+    {{- $m = printf "%s<div class=\"et_pb_module et_pb_text et_pb_text_align_left person\"><div class=\"et_pb_text_inner\">%s</div></div>\n%s" $m $t (partial "classic/divider.html" .) -}}
+    {{- $out = printf "%s\n<div class=\"person-row\">%s</div>" $out $m -}}
+  {{- end -}}
+{{- else -}}
+  {{- warnf "classic/people: no entries for key %q in data/people.yaml" .key -}}
+{{- end -}}
+{{- return ($out | safeHTML) -}}

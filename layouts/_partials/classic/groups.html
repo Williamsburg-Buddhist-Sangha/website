@@ -1,0 +1,40 @@
+{{- /* Meditation groups (data/groups.yaml) in production order. Per group: h1 heading, h4
+       leader, description, roster table, image (optionally linked), more.
+       Dividers as on production: one before each group except a group on the same day as
+       the previous one (Monday Yoga follows Monday meditation without a divider), and one
+       before the last group's `more` (the page's closing paragraphs).
+       Classes per module: group-<anchorized name> (per-group production styling in
+       30-pages.css), group--same-day (smaller h1, as the Yoga section).
+       Context: the page. Returns HTML. */ -}}
+{{- $page := . -}}
+{{- $out := "" -}}
+{{- $prevDay := "" -}}
+{{- $groups := site.Data.groups.groups | default slice -}}
+{{- $last := sub (len $groups) 1 -}}
+{{- range $i, $g := $groups -}}
+  {{- $day := $g.day | default "" -}}
+  {{- $same := and (gt $i 0) (ne $day "") (eq $day $prevDay) -}}
+  {{- $cls := printf "group-%s%s" (anchorize $g.name) (cond $same " group--same-day" "") -}}
+  {{- $h := printf "<h1 id=\"%s\">%s</h1>\n" (anchorize $g.name) ($g.heading | default $g.name | htmlEscape) -}}
+  {{- with $g.leader }}{{ $h = printf "%s<h4>%s</h4>\n" $h ($page.RenderString .) }}{{ end -}}
+  {{- with $g.description }}{{ $h = printf "%s%s\n" $h ($page.RenderString (dict "display" "block") .) }}{{ end -}}
+  {{- with $g.roster -}}
+    {{- $rows := "" -}}
+    {{- range . }}{{ $rows = printf "%s<tr><td>%s</td><td>%s</td></tr>\n" $rows ((time.AsTime .date).Format "January 2") (.teacher | htmlEscape) }}{{ end -}}
+    {{- $h = printf "%s<table class=\"roster\">\n<tbody>\n%s</tbody>\n</table>\n" $h $rows -}}
+  {{- end -}}
+  {{- $mod := printf "<div class=\"et_pb_module et_pb_text et_pb_text_align_left group %s\"><div class=\"et_pb_text_inner\">%s</div></div>" $cls $h -}}
+  {{- with $g.image -}}
+    {{- $img := printf "<img src=\"%s\"%s alt=\"%s\" loading=\"lazy\" decoding=\"async\">" (partial "url.html" .) (partial "img-size.html" .) ($g.image_alt | default "" | htmlEscape) -}}
+    {{- with $g.image_link }}{{ $img = printf "<a href=\"%s\">%s</a>" (partial "url.html" .) $img }}{{ end -}}
+    {{- $mod = printf "%s\n<div class=\"et_pb_module et_pb_image group-image %s-image\"><span class=\"et_pb_image_wrap\">%s</span></div>" $mod (printf "group-%s" (anchorize $g.name)) $img -}}
+  {{- end -}}
+  {{- with $g.more -}}
+    {{- if eq $i $last }}{{ $mod = printf "%s\n%s" $mod (partial "classic/divider.html" .) }}{{ end -}}
+    {{- $mod = printf "%s\n<div class=\"et_pb_module et_pb_text et_pb_text_align_left group-more %s-more\"><div class=\"et_pb_text_inner\">%s</div></div>" $mod (printf "group-%s" (anchorize $g.name)) ($page.RenderString (dict "display" "block") .) -}}
+  {{- end -}}
+  {{- if or (eq $i 0) (ne $day $prevDay) (eq $day "") }}{{ $out = printf "%s\n%s" $out (partial "classic/divider.html" .) }}{{ end -}}
+  {{- $out = printf "%s\n%s" $out $mod -}}
+  {{- $prevDay = $day -}}
+{{- end -}}
+{{- return ($out | safeHTML) -}}

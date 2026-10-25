@@ -1,0 +1,9 @@
+{{- /* Classic inner page: #primary.grid_11.suffix_1 > Divi section/row/column 4_4.
+       The body is split into text modules at every top-level <hr> (rendered as a Divi divider).
+       show_groups / people blocks follow the body. The title band (classic/title-band.html) sits
+       above #main; there is no sidebar. */ -}}
+{{- $body := partial "classic/modules.html" (dict "html" (string (partial "content.html" .)) "split" "hr") -}}
+{{- $extra := "" -}}
+{{- if .Params.show_groups }}{{ $extra = partial "classic/groups.html" . }}{{ end -}}
+{{- with .Params.people }}{{ $extra = partial "classic/people.html" (dict "page" $ "key" .) }}{{ end -}}
+{{ partial "classic/primary.html" (dict "page" . "html" (printf "%s\n%s" $body $extra)) }}

@@ -1,0 +1,32 @@
+{{- /* Content column of an inner page. Context: dict "page", "html" (Divi rows/modules;
+       wrapped in one section > row > column 4_4 unless "rows" is true); "emptySection" adds
+       production's empty second Divi section (its padding adds height). */ -}}
+<div id="primary" class="grid_11 suffix_1">
+	<article class="single page type-page hentry">
+		<div class="entry-content">
+			<div class="clear"></div>
+			<div class="long-description">
+				<div class="et-l">
+					<div class="et_builder_inner_content et_pb_gutters3">
+						<div class="et_pb_section et_pb_section_0">
+{{- if .rows }}
+{{ .html | safeHTML }}
+{{- else }}
+							<div class="et_pb_row et_pb_row_0">
+								<div class="et_pb_column et_pb_column_4_4 et_pb_column_0 et-last-child">
+{{ .html | safeHTML }}
+								</div>
+							</div>
+{{- end }}
+						</div>
+{{- if .emptySection }}
+						<div class="et_pb_section et_pb_section_1"></div>
+{{- end }}
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</article>
+	<div class="clear"></div>
+</div>

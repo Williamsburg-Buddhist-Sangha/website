@@ -1,0 +1,47 @@
+{{- /* Classic layout: reproduces the production WordPress site (Charitas Lite theme + Divi
+       Builder bodies) on this repo's content model. Selected by hugo.toml params.layout =
+       "classic" (layouts/baseof.html). Production ids kept for tooling: #toolbar, #branding,
+       #sticky_navigation, #site-navigation, #teaser (home), .teaser-page-list (title band), #main,
+       #primary, #colophon.
+       Dispatch by page kind: home / events section / event page / 404 / any other page. */ -}}
+{{- $kind := "page" -}}
+{{- if .IsHome }}{{ $kind = "home" }}
+{{- else if eq .Kind "404" }}{{ $kind = "404" }}
+{{- else if and (eq .Section "events") (eq .Kind "section") }}{{ $kind = "events" }}
+{{- else if and (eq .Section "events") (eq .Kind "page") }}{{ $kind = "event" }}
+{{- end -}}
+{{- $slug := "" }}{{ with .File }}{{ $slug = .ContentBaseName | urlize }}{{ end -}}
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "en-US" }}" class="no-js">
+<head>
+{{ partial "classic/head.html" . }}
+</head>
+<body class="classic {{ if .IsHome }}home{{ else }}page{{ end }} is-{{ $kind }}{{ with .Section }} section-{{ . }}{{ end }}{{ if and $slug (not .IsHome) }} page-{{ $slug }}{{ end }} et-db">
+<div id="page">
+{{ partial "classic/toolbar.html" . }}
+{{ partial "classic/header.html" . }}
+{{- if eq $kind "home" }}
+{{ partial "classic/hero.html" . }}
+{{- else }}
+{{ partial "classic/title-band.html" . }}
+{{- end }}
+<div id="main" class="site-main container_16">
+	<div class="inner">
+{{- if eq $kind "home" }}
+{{ partial "classic/home.html" . }}
+{{- else if eq $kind "events" }}
+{{ partial "classic/events.html" . }}
+{{- else if eq $kind "event" }}
+{{ partial "classic/event.html" . }}
+{{- else if eq $kind "404" }}
+{{ partial "classic/404.html" . }}
+{{- else }}
+{{ partial "classic/page.html" . }}
+{{- end }}
+		<div class="clear"></div>
+	</div>
+</div>
+{{ partial "classic/footer.html" . }}
+</div>
+</body>
+</html>

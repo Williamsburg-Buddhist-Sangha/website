@@ -1,0 +1,19 @@
+{{- /* Menu <ul> for the header. Context: dict "items" (from classic/header.html), optional
+       "id", "class", "mobile" (adds meanmenu "+" expanders, shown only with JS).
+       No whitespace between <li> (the HTML minifier would drop it anyway); the gap that
+       production's inline-block items get from that whitespace is CSS margin. */ -}}
+<ul{{ with .id }} id="{{ . }}"{{ end }}{{ with .class }} class="{{ . }}"{{ end }}>
+{{- range .items -}}
+{{- $name := .name -}}
+<li class="menu-item{{ if .children }} menu-item-has-children{{ end }}{{ if .current }} current-menu-item current_page_item{{ end }}{{ if .ancestor }} current-menu-ancestor{{ end }}"><a href="{{ .href }}"{{ if .current }} aria-current="page"{{ end }}>{{ .name }}</a>
+{{- with .children -}}
+<ul class="sub-menu">
+{{- range . -}}
+<li class="menu-item{{ if .current }} current-menu-item current_page_item{{ end }}"><a href="{{ .href }}"{{ if .current }} aria-current="page"{{ end }}>{{ .name }}</a></li>
+{{- end -}}
+</ul>
+{{- if $.mobile }}<a class="mean-expand" href="#" role="button" aria-expanded="false" aria-label="{{ $name }} submenu" hidden>+</a>{{ end -}}
+{{- end -}}
+</li>
+{{- end -}}
+</ul>

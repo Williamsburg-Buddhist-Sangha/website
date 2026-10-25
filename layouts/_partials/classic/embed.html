@@ -1,0 +1,20 @@
+{{- /* WordPress-embed look-alike card for a site page (production embeds /<page>/embed/ in an
+       iframe). Context: the page path ("/meditation-groups/"). Title, empty excerpt (production
+       pages have none), site icon + site name, share icon (decorative). */ -}}
+{{- $path := . | string -}}
+{{- $target := site.GetPage (strings.TrimSuffix "/" $path) -}}
+{{- if not $target }}{{ range site.Pages }}{{ if eq .RelPermalink (partial "url.html" $path) }}{{ $target = . }}{{ end }}{{ end }}{{ end -}}
+{{- with $target }}
+<div class="video-container">
+	<div class="wp-embed">
+		<p class="wp-embed-heading"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+		<div class="wp-embed-excerpt"></div>
+		<div class="wp-embed-footer">
+			<div class="wp-embed-site-title"><a href="{{ relURL "" }}">{{ with resources.Get "images/favicon.svg" }}{{ $f := . | minify | fingerprint }}<img src="{{ $f.RelPermalink }}" width="32" height="32" alt="" class="wp-embed-site-icon">{{ end }}<span>{{ site.Title }}</span></a></div>
+			<div class="wp-embed-meta"><span class="wp-embed-share" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20"><path fill="currentColor" d="M14.5 12q1.24 0 2.12.88T17.5 15t-.88 2.12-2.12.88-2.12-.88T11.5 15q0-.34.09-.69l-4.38-2.3Q6.32 13 5 13q-1.24 0-2.12-.88T2 10t.88-2.12T5 7q1.3 0 2.21.99l4.38-2.3q-.09-.35-.09-.69 0-1.24.88-2.12T14.5 2t2.12.88T17.5 5t-.88 2.12T14.5 8q-1.3 0-2.21-.99l-4.38 2.3Q8 9.66 8 10t-.09.69l4.38 2.3q.89-.99 2.21-.99z"/></svg></span></div>
+		</div>
+	</div>
+</div>
+{{- else }}
+{{- warnf "classic/embed: no page for %q (data/home.yaml boxes.embed)" $path }}
+{{- end }}

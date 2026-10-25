@@ -1,0 +1,6 @@
+{{- /* Home teaser: one static photo with baked-in text (production #teaser img.header-image). */ -}}
+{{- with .Params.hero_image_classic | default .Params.hero_image }}
+<div id="teaser">
+	<img class="header-image" src="{{ partial "url.html" . }}"{{ partial "img-size.html" . }} alt="Williamsburg Buddhist Sangha" fetchpriority="high" decoding="async">
+</div>
+{{- end }}

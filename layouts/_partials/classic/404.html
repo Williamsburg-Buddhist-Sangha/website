@@ -1,0 +1,2 @@
+{{- $h := printf "<div class=\"et_pb_module et_pb_text et_pb_text_align_left\"><div class=\"et_pb_text_inner\">\n<h1>Page not found</h1>\n<p>The page you were looking for has moved or no longer exists. Our old WordPress addresses may have changed.</p>\n<p><a href=\"%s\">Go to the homepage</a></p>\n</div></div>" (relURL "") -}}
+{{ partial "classic/primary.html" (dict "page" . "html" $h) }}

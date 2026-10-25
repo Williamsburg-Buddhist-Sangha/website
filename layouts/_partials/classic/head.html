@@ -1,0 +1,46 @@
+{{- $info := partial "site-info.html" . -}}
+{{- $desc := .Description | default .Params.summary | default $info.description | plainify | strings.TrimSpace -}}
+{{- $title := cond .IsHome site.Title (printf "%s – %s" (cond (eq .Kind "404") "Page not found" .Title) site.Title) -}}
+{{- $img := .Params.hero_image_classic | default .Params.hero_image | default .Params.image | default site.Params.ogImage | default site.Params.logo | default "" -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+{{- if site.Params.preview }}
+<meta name="robots" content="noindex,nofollow">
+{{- end }}
+<link rel="canonical" href="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ cond .IsHome site.Title .Title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="{{ site.LanguageCode | default "en-us" | replaceRE "-" "_" }}">
+{{- with $img }}
+<meta property="og:image" content="{{ partial "abs-url.html" . }}">
+<meta name="twitter:card" content="summary_large_image">
+{{- end }}
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js")</script>
+{{- /* Fonts: the same two Google Fonts CSS requests production makes (theme: Arimo + Archivo
+       Narrow; Divi: Lato), so the browser gets the same font files and weight matching. */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic%7CArchivo+Narrow:400,400italic,700italic,700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic&amp;subset=latin,latin-ext&amp;display=swap">
+{{- /* Classic stylesheet: assets/css/classic/*.css in file-name order (own pipeline: concat ->
+       fingerprint). Not minified: Hugo's CSS minifier lowercases and unquotes font-family names
+       ("Arimo" -> arimo), which would change the computed font-family strings that the
+       production comparison checks. */}}
+{{- $css := resources.Match "css/classic/*.css" | resources.Concat "css/classic.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- $js := resources.Get "js/classic.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- with site.Params.favicon }}
+<link rel="icon" href="{{ partial "url.html" . }}">
+{{- else }}
+{{- $fav := resources.Get "images/favicon.svg" | minify | fingerprint }}
+<link rel="icon" href="{{ $fav.RelPermalink }}" type="image/svg+xml">
+{{- end }}
+{{- range .AlternativeOutputFormats -}}
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink site.Title | safeHTML }}
+{{- end }}

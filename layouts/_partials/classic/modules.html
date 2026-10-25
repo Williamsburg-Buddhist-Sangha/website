@@ -1,0 +1,30 @@
+{{- /* Split body HTML into Divi-like text modules. Context: dict "html" (string), "split"
+       ("hr": a top-level <hr> becomes a divider module between text modules; "h1": every
+       top-level <h1> starts a new text module, as the production homepage is built),
+       "class" (extra classes on each text module). A body button (content.html: a link alone in
+       its paragraph) is wrapped in a centred .et_pb_button_module_wrapper, as production.
+       Returns safe HTML. */ -}}
+{{- $html := string .html -}}
+{{- $parts := slice -}}
+{{- $cur := slice -}}
+{{- $seps := slice -}}
+{{- range split $html "\n" -}}
+  {{- if and (eq $.split "hr") (eq (trim . " \t") "<hr>") -}}
+    {{- $parts = $parts | append (delimit $cur "\n") }}{{ $cur = slice }}{{ $seps = $seps | append "divider" -}}
+  {{- else if and (eq $.split "h1") (hasPrefix . "<h1") (gt (len $cur) 0) -}}
+    {{- $parts = $parts | append (delimit $cur "\n") }}{{ $cur = slice . }}{{ $seps = $seps | append "none" -}}
+  {{- else if hasPrefix . `<a class="btn btn--primary"` -}}
+    {{- $cur = $cur | append (printf `<div class="et_pb_button_module_wrapper et_pb_button_alignment_center">%s</div>` .) -}}
+  {{- else -}}
+    {{- $cur = $cur | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $parts = $parts | append (delimit $cur "\n") -}}
+{{- $out := "" -}}
+{{- range $i, $p := $parts -}}
+  {{- if gt $i 0 }}{{ if eq (index $seps (sub $i 1)) "divider" }}{{ $out = printf "%s\n%s" $out (partial "classic/divider.html" .) }}{{ end }}{{ end -}}
+  {{- if trim $p " \n\t" -}}
+    {{- $out = printf "%s\n<div class=\"et_pb_module et_pb_text et_pb_text_align_left%s\"><div class=\"et_pb_text_inner\">%s</div></div>" $out (cond (ne ($.class | default "") "") (printf " %s" $.class) "") $p -}}
+  {{- end -}}
+{{- end -}}
+{{- return ($out | safeHTML) -}}

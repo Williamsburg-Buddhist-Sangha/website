@@ -1,0 +1,13 @@
+{{- /* One event as production shows it: text module (h1 title, body) + Register button
+       (register_url, label register_label, default "Register"). Context: the event page. */ -}}
+<div class="et_pb_module et_pb_text et_pb_text_align_left event" id="{{ .File.ContentBaseName | urlize }}">
+	<div class="et_pb_text_inner">
+		<h1>{{ .Title }}</h1>
+		{{ partial "content.html" . }}
+	</div>
+</div>
+{{- with .Params.register_url }}
+<div class="et_pb_button_module_wrapper et_pb_button_alignment_center et_pb_module">
+	<a class="btn btn--primary et_pb_button" href="{{ partial "url.html" . }}">{{ $.Params.register_label | default "Register" }}</a>
+</div>
+{{- end }}

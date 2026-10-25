@@ -1,0 +1,18 @@
+{{- /* Classic events page (production /upcoming-events/): one Divi row, featured upcoming
+       events (featured: true, soonest first) in the 2/3 column, other upcoming events in the
+       1/3 column. Past events are not shown. Without a featured event the soonest upcoming
+       event takes the 2/3 column. The section body (content/events/_index.md), if any,
+       comes first. */ -}}
+{{- $ev := partial "events-split.html" . -}}
+{{- $main := where $ev.upcoming "Params.featured" true -}}
+{{- $side := slice -}}
+{{- range $ev.upcoming }}{{ if not (in $main .) }}{{ $side = $side | append . }}{{ end }}{{ end -}}
+{{- if and (not $main) $side }}{{ $main = first 1 $side }}{{ $side = after 1 $side }}{{ end -}}
+{{- $intro := partial "classic/modules.html" (dict "html" (string (partial "content.html" .)) "split" "hr") -}}
+{{- $m := "" }}{{ range $main }}{{ $m = printf "%s\n%s" $m (partial "classic/event-module.html" .) }}{{ end -}}
+{{- $s := "" }}{{ range $side }}{{ $s = printf "%s\n%s" $s (partial "classic/event-module.html" .) }}{{ end -}}
+{{- if not (or $main $side) }}{{ $m = `<div class="et_pb_module et_pb_text et_pb_text_align_left"><div class="et_pb_text_inner"><p>There are no upcoming events at the moment.</p></div></div>` }}{{ end -}}
+{{- $html := "" -}}
+{{- if trim (string $intro) " \n" }}{{ $html = printf "<div class=\"et_pb_row et_pb_row_intro\"><div class=\"et_pb_column et_pb_column_4_4 et-last-child\">%s</div></div>\n" $intro }}{{ end -}}
+{{- $html = printf "%s<div class=\"et_pb_row et_pb_row_0 et_pb_gutters3 events-row\">\n<div class=\"et_pb_column et_pb_column_2_3 et_pb_column_0 events-main\">%s\n</div>\n<div class=\"et_pb_column et_pb_column_1_3 et_pb_column_1 et-last-child events-side\">%s\n</div>\n</div>" $html $m $s -}}
+{{ partial "classic/primary.html" (dict "page" . "html" $html "rows" true "emptySection" true) }}

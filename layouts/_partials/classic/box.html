@@ -1,0 +1,23 @@
+{{- /* One homepage box (data/home.yaml boxes[]). Context: dict "page" "box" "index".
+       title (h1, or h2 when small_title) linked when title_url; text (Markdown, rendered plainly: a
+       link alone stays a link, as production); embed (WP-embed card of that page); button_label + button_url
+       (Divi button); box_link (whole box clickable, new tab, as production et_clickable). */ -}}
+{{- $b := .box -}}
+{{- $p := .page -}}
+{{- $tag := cond (eq $b.small_title true) "h2" "h1" -}}
+<div class="et_pb_module et_pb_text et_pb_text_align_left home-box home-box-{{ add .index 1 }}{{ if $b.small_title }} home-box--small{{ end }}{{ if $b.box_link }} et_clickable{{ end }}"{{ with $b.box_link }} data-box-link="{{ partial "url.html" . }}"{{ end }}>
+	<div class="et_pb_text_inner">
+		{{- with $b.title }}
+		{{ printf "<%s>" $tag | safeHTML }}{{ with $b.title_url }}<a href="{{ partial "url.html" . }}">{{ end }}{{ . }}{{ if $b.title_url }}</a>{{ end }}{{ printf "</%s>" $tag | safeHTML }}
+		{{- end }}
+		{{- with $b.text }}
+		{{ . | $p.RenderString (dict "display" "block") }}
+		{{- end }}
+		{{- with $b.embed }}
+		{{ partial "classic/embed.html" . }}
+		{{- end }}
+		{{- with $b.button_url }}
+		<p class="home-box__button"><a class="btn btn--primary et_pb_button" href="{{ partial "url.html" . }}">{{ $b.button_label | default "Learn more" }}</a></p>
+		{{- end }}
+	</div>
+</div>

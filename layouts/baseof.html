@@ -1,3 +1,4 @@
+{{- if eq (site.Params.layout | default "modern") "classic" }}{{ partial "classic/document.html" . }}{{ else -}}
 <!doctype html>
 <html lang="{{ site.Language.LanguageCode | default "en" }}" data-design="{{ (partial "designs.html" .).default }}">
 <head>
@@ -14,3 +15,4 @@
 {{ partial "switcher.html" . }}
 </body>
 </html>
+{{ end -}}

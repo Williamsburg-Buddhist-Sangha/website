@@ -1,0 +1,16 @@
+{{- /* Inner-page title band (production .item.teaser-page-list): h1.page-title + #rootline
+       breadcrumbs "Home > Title" (production shows no parent level, also for About Us pages). */ -}}
+{{- $title := cond (eq .Kind "404") "Page not found" .Title -}}
+<div class="item teaser-page-list">
+	<div class="container_16">
+		<aside class="grid_10">
+			<h1 class="page-title">{{ $title }}</h1>
+		</aside>
+		<div class="grid_6">
+			<div id="rootline">
+				<a href="{{ relURL "" }}">Home</a> &gt; <span class="current">{{ $title }}</span>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
