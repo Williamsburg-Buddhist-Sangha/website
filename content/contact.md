@@ -1,14 +1,15 @@
 ---
-title: "Contact"
-description: "How to reach the Williamsburg Buddhist Sangha and sign up for the monthly newsletter."
+title: Contact
+description: How to reach the Williamsburg Buddhist Sangha and sign up for the
+  monthly newsletter.
 slug: contact
-aliases: ["/contact-us/"]
+aliases:
+  - /contact-us/
 menu:
   main:
-    name: "Contact"
+    name: Contact
     weight: 60
 ---
-
 ## Questions about our activities?
 
 Please don’t hesitate to reach out to us at: *[contact@williamsburgbuddhistsangha.org](mailto:contact@williamsburgbuddhistsangha.org)*.

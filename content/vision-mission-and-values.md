@@ -1,14 +1,13 @@
 ---
-title: "Vision, Mission & Values"
-description: "The vision, mission and core values of the Williamsburg Buddhist Sangha."
+title: Vision, Mission & Values
+description: The vision, mission and core values of the Williamsburg Buddhist Sangha.
 slug: vision-mission-and-values
 menu:
   main:
-    parent: "About Us"
-    name: "Vision, Mission & Values"
+    parent: About Us
+    name: Vision, Mission & Values
     weight: 10
 ---
-
 **VISION:** The vision of the Williamsburg Buddhist Sangha (WBS) is to:
 
 - Enhance the physical and emotional wellbeing of the people of Williamsburg and the surrounding areas;

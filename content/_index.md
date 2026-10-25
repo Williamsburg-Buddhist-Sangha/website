@@ -1,6 +1,6 @@
 ---
-title: "Williamsburg Buddhist Sangha"
-tagline: "A community for practice and learning in Williamsburg, Virginia"
+title: Williamsburg Buddhist Sangha
+tagline: A community for practice and learning in Williamsburg, Virginia
 hero_image: /images/hero.jpg
 ---
 ## The Williamsburg Buddhist Sangha (WBS) Provides

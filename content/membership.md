@@ -1,14 +1,15 @@
 ---
-title: "Membership"
-description: "Membership in the Williamsburg Buddhist Sangha is open to anyone who supports its mission and values."
+title: Membership
+description: Membership in the Williamsburg Buddhist Sangha is open to anyone
+  who supports its mission and values.
 slug: membership
-aliases: ["/sangha-membership/"]
+aliases:
+  - /sangha-membership/
 menu:
   main:
-    name: "Membership"
+    name: Membership
     weight: 40
 ---
-
 Williamsburg Buddhist Sangha activities are always open – *at no charge* – to anyone and everyone who would like to practice together or is interested in the teachings. There is no requirement to become a member and no special status or benefits conferred by membership – aside from the inherent sense of belonging that one gains from joining a community.
 
 We offer membership because we believe that for some, this sense of belonging IS valuable, both to the member and to the community. It is a way for those who feel invested in our sangha to be recognized as such – and for us to recognize each other.

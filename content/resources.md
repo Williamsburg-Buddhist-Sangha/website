@@ -1,13 +1,13 @@
 ---
-title: "Resources"
-description: "Online resources, regional retreat centers, books and articles on Buddhism and meditation."
+title: Resources
+description: Online resources, regional retreat centers, books and articles on
+  Buddhism and meditation.
 slug: resources
 menu:
   main:
-    name: "Resources"
+    name: Resources
     weight: 30
 ---
-
 **“Awareness, Compassion, Wisdom: buy one, get two free”**  
 – Yongey Mingyur Rinpoche
 

@@ -1,13 +1,16 @@
 ---
-title: "Just Sitting (and Walking)"
+title: Just Sitting (and Walking)
 date: 2026-10-17
-time: "10:00 am – 4:00 pm"
-location: "Parker House (building 2 on the WUU campus map), Williamsburg Unitarian Universalist campus, and on Zoom"
-map_url: "https://maps.app.goo.gl/DeXdaVcqacVK1xKfA"
-teachers: ["John Davis"]
-register_url: "https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578538125490"
+time: 10:00 am – 4:00 pm
+location: Parker House (building 2 on the WUU campus map), Williamsburg
+  Unitarian Universalist campus, and on Zoom
+map_url: https://maps.app.goo.gl/DeXdaVcqacVK1xKfA
+teachers:
+  - John Davis
+register_url: https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578538125490
 featured: false
-summary: "Daylong meditation with John Davis on Saturday, October 17, from 10:00 am to 4:00 pm, on Zoom and in person."
+summary: Daylong meditation with John Davis on Saturday, October 17, from 10:00
+  am to 4:00 pm, on Zoom and in person.
 ---
 *Daylong*
 
@@ -33,7 +36,7 @@ If you are planning on attending, please register so we will know how much lunch
 
 Join by Zoom:
 
-<https://us02web.zoom.us/j/86879334288?pwd=XdFdMqv5MAzsKD1JhTkiYmk2TE3rk4.1>  
+[https://us02web.zoom.us/j/86879334288?pwd=XdFdMqv5MAzsKD1JhTkiYmk2TE3rk4.1](https://us02web.zoom.us/j/86879334288?pwd=XdFdMqv5MAzsKD1JhTkiYmk2TE3rk4.1)  
 Meeting ID: 868 7933 4288  
 Passcode: 985929  
 Join by Phone:  
