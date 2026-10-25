@@ -1,9 +1,16 @@
 # Pages CMS configuration (https://pagescms.org/docs/configuration/).
 # Editors change content/, data/ and static/images/ only. See CONTENT-MODEL.md.
 #
-# Body text uses a plain Markdown editor (type: code, format: markdown), not the
-# WYSIWYG rich-text editor, so Hugo shortcodes such as {{< groups >}} and
-# {{< button href="..." >}}...{{< /button >}} are saved exactly as typed.
+# Body text (pages, events, events intro, homepage) uses the WYSIWYG rich-text
+# editor (type: rich-text, format: markdown). When John edits a body, the editor
+# re-writes the whole body as Markdown on save. So bodies hold no Hugo shortcodes
+# and no raw HTML (CONTENT-MODEL.md, "Markdown bodies"):
+# - a link alone in its own paragraph renders as a button;
+# - an image alone in its own paragraph renders as a figure;
+# - the groups and people lists come from front matter keys (show_groups, people)
+#   that are not in the forms. settings.content.merge keeps them.
+# Short Markdown snippets (group description, bios, card text, event summary)
+# stay plain text fields.
 
 media:
   input: static/images
@@ -13,7 +20,8 @@ media:
 
 settings:
   content:
-    # Keep front matter keys that are not in a form (menu, aliases, slug).
+    # Keep front matter keys that are not in a form (menu, aliases, slug,
+    # show_groups, people).
     # Without this, saving a page would delete them and break navigation.
     merge: true
   commit:
@@ -158,8 +166,8 @@ content:
         type: text
       - name: body
         label: Event details
-        description: Markdown text. Keep any {{< ... >}} lines exactly as they are.
-        type: code
+        description: A link alone on its own line shows as a button. An image alone on its own line shows as a picture.
+        type: rich-text
         options:
           format: markdown
 
@@ -182,12 +190,13 @@ content:
         type: text
       - name: body
         label: Intro text
-        type: code
+        type: rich-text
         options:
           format: markdown
 
   # 4. Fixed site pages (content/*.md). No create, rename or delete.
-  #    menu, aliases and slug are left out on purpose; settings.content.merge keeps them.
+  #    menu, aliases, slug, show_groups and people are left out on purpose;
+  #    settings.content.merge keeps them.
   - name: pages
     label: Pages
     type: collection
@@ -217,8 +226,8 @@ content:
         type: text
       - name: body
         label: Page text
-        description: Markdown text. Keep any {{< ... >}} lines exactly as they are. They insert the groups, people lists and buttons.
-        type: code
+        description: A link alone on its own line shows as a button. An image alone on its own line shows as a picture. The groups, teachers and board lists are added by the site, after this text.
+        type: rich-text
         options:
           format: markdown
 
@@ -244,7 +253,7 @@ content:
         type: image
       - name: body
         label: Welcome text
-        type: code
+        type: rich-text
         options:
           format: markdown
 
