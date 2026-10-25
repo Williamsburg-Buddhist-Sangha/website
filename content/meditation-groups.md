@@ -7,6 +7,7 @@ menu:
   main:
     name: "Meditation Groups"
     weight: 10
+show_groups: true
 ---
 
 All are welcome to our Meditation groups. No prior training or knowledge is needed. Even with the book group, there is no need to have read the book because we read it during group. There is nothing you need to bring.  We typically sit in chairs (except for walking meditation), but you can bring a cushion and sit on the floor if you prefer. There is no cost for any of our groups or events, although we do accept donations.
@@ -16,8 +17,6 @@ All are welcome to our Meditation groups. No prior training or knowledge is need
 #### *Other weekly Meditation Groups continue to be conducted online.*
 
 *Monday night is hybrid: Online and in person.*
-
-{{< groups >}}
 
 If you haven’t used Zoom before, don’t worry – it’s easy! But you may want to log in about 10 minutes early to get yourself all set up.
 

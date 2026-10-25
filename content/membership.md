@@ -17,4 +17,4 @@ Membership is open to anyone who wishes to be considered a member, with no requi
 
 If would like to be considered a member of the Williamsburg Buddhist Sangha, please submit our membership form below. We welcome you!
 
-{{< button href="https://wbs.breezechms.com/form/6e709b" >}}Membership Form{{< /button >}}
+[Membership Form](https://wbs.breezechms.com/form/6e709b)

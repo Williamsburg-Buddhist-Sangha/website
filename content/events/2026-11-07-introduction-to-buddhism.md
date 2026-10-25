@@ -29,4 +29,4 @@ Expect teaching, group conversation, and guided practice. No experience needed.
 
 Space is limited. Reserve your spot today:
 
-{{< button href="https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578589192382" >}}Register{{< /button >}}
+[Register](https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578589192382)

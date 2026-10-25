@@ -11,7 +11,7 @@ menu:
 
 ## Questions about our activities?
 
-Please don’t hesitate to reach out to us at: [*contact@williamsburgbuddhistsangha.org*](mailto:contact@williamsburgbuddhistsangha.org).
+Please don’t hesitate to reach out to us at: *[contact@williamsburgbuddhistsangha.org](mailto:contact@williamsburgbuddhistsangha.org)*.
 
 Our Mailing address is:
 
@@ -24,10 +24,10 @@ Williamsburg, VA 23185
 
 CLICK this button to sign up for our monthly newsletter. Buddhism, meditation practices, and WBS activities.
 
-{{< button href="https://williamsburgbuddhistsangha.us17.list-manage.com/subscribe?u=fc1ad0b20592452e7a0fbf777&id=4ef0d32acc" >}}Subscribe{{< /button >}}
+[Subscribe](https://williamsburgbuddhistsangha.us17.list-manage.com/subscribe?u=fc1ad0b20592452e7a0fbf777&id=4ef0d32acc)
 
 ### Our latest Newsletter
 
 CLICK this button to see the browser version of our latest Newsletter
 
-{{< button href="https://us17.campaign-archive.com/?e=__test_email__&u=fc1ad0b20592452e7a0fbf777&id=f7fe0c7bae" >}}Current Newsletter{{< /button >}}
+[Current Newsletter](https://us17.campaign-archive.com/?e=__test_email__&u=fc1ad0b20592452e7a0fbf777&id=f7fe0c7bae)

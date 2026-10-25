@@ -11,7 +11,7 @@ menu:
 
 ## Dana
 
-{{< figure src="/images/dana.jpg" alt="Dana" >}}
+![Dana](/images/dana.jpg)
 
 [Dana](http://dharmawisdom.org/teachings/articles/meaning-pali-word-dana) is the ancient Buddhist practice of generosity and is regarded as a central pillar of spiritual life.  Monks and teachers practice dana by offering the dharma freely.  Students and community members practice dana by contributing to support the teachers.  In the act of giving we develop our ability to let go, cultivate a spirit of caring, and acknowledge our shared interconnectedness.  The practice of dana has kept Buddhism alive for more than 2,500 years – an interdependence between those who offer its teachings and those who receive them.
 
@@ -30,4 +30,4 @@ The first time you text-to-give, you will be prompted to enter your payment info
 
 The Williamsburg Buddhist Sangha is a tax-exempt public charity designated under section 501(c)3 of the US Internal Revenue Code.
 
-{{< button href="https://wbs.breezechms.com/give/online" >}}Donate Now{{< /button >}}
+[Donate Now](https://wbs.breezechms.com/give/online)

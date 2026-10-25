@@ -13,4 +13,4 @@ Each of our teachers has agreed to and signed this document.
 
 It can be downloaded as a pdf [>>HERE<<](https://williamsburgbuddhistsangha.org/wp-content/uploads/2024/08/TeacherCodeOfEthics.pdf)
 
-{{< figure src="/images/teacher-code-of-ethics.jpg" alt="Teacher Code of Ethics (scanned document)" >}}
+![Teacher Code of Ethics (scanned document)](/images/teacher-code-of-ethics.jpg)

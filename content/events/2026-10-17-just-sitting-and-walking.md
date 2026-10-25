@@ -43,12 +43,12 @@ Join by Phone:
 *to this moment, who can untangle them?*“  
 – John Brehm
 
-{{< button href="https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578538125490" >}}Register{{< /button >}}
+[Register](https://wbs.breezechms.com/form/c949e8863832433337934630276256571389578538125490)
 
 Chairs will be available for all; if you prefer to use a meditation cushion, please feel free to bring one. We will not be providing snacks or drinks, so please bring your own if that would be supportive to you.
 
 ### Location
 
-The retreat is held in the **Parker House** — building **2** on the WUU campus map below (click the map to open it full size). [Directions on Google Maps](https://maps.app.goo.gl/DeXdaVcqacVK1xKfA).
+The retreat is held in the **Parker House** — building **2** on the WUU campus map below ([open the map full size](/images/events/wuu-campus-map.webp)). [Directions on Google Maps](https://maps.app.goo.gl/DeXdaVcqacVK1xKfA).
 
-[![WUU campus map with Parker House marked as building 2](/images/events/wuu-campus-map.webp)](/images/events/wuu-campus-map.webp)
+![WUU campus map with Parker House marked as building 2](/images/events/wuu-campus-map.webp)

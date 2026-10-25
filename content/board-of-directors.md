@@ -7,6 +7,5 @@ menu:
     parent: "About Us"
     name: "Board of Directors"
     weight: 40
+people: board
 ---
-
-{{< people "board" >}}

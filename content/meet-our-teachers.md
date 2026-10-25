@@ -8,6 +8,5 @@ menu:
     parent: "About Us"
     name: "Meet Our Teachers"
     weight: 20
+people: teachers
 ---
-
-{{< people "teachers" >}}
