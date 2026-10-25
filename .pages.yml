@@ -1,0 +1,340 @@
+# Pages CMS configuration (https://pagescms.org/docs/configuration/).
+# Editors change content/, data/ and static/images/ only. See CONTENT-MODEL.md.
+#
+# Body text uses a plain Markdown editor (type: code, format: markdown), not the
+# WYSIWYG rich-text editor, so Hugo shortcodes such as {{< groups >}} and
+# {{< button href="..." >}}...{{< /button >}} are saved exactly as typed.
+
+media:
+  input: static/images
+  output: /images
+  rename: safe
+  categories: [image]
+
+settings:
+  content:
+    # Keep front matter keys that are not in a form (menu, aliases, slug).
+    # Without this, saving a page would delete them and break navigation.
+    merge: true
+  commit:
+    # Record the editor's name and email on each commit.
+    identity: user
+
+content:
+  # 1. Meditation groups and the monthly teacher roster
+  - name: groups
+    label: Meditation groups & teacher schedule
+    type: file
+    path: data/groups.yaml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+      - name: groups
+        label: Meditation groups
+        description: Open a group to edit its monthly teacher schedule or its details.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} ({day})"
+        fields:
+          - name: roster
+            label: Monthly teacher schedule
+            description: One row per meeting date. Remove past dates and add next month's dates. Leave empty for groups without a rotating teacher.
+            type: object
+            list: true
+            fields:
+              - name: date
+                label: Date
+                type: date
+                required: true
+                options:
+                  format: yyyy-MM-dd
+              - name: teacher
+                label: Teacher
+                type: string
+                required: true
+          - name: name
+            label: Group name
+            type: string
+            required: true
+          - name: day
+            label: Day
+            type: select
+            required: true
+            options:
+              values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+          - name: time
+            label: Time
+            description: "For example: 7:00 pm or 10:00–11:15 am"
+            type: string
+          - name: location
+            label: Location
+            type: string
+          - name: zoom_url
+            label: Zoom link
+            description: Full https:// link. Leave empty for in-person-only groups.
+            type: string
+          - name: description
+            label: Description
+            description: Markdown text. **bold**, *italic*, [link text](https://...). A blank line starts a new paragraph.
+            type: text
+
+  # 2. Events (one file per event: content/events/yyyy-mm-dd-slug.md)
+  - name: events
+    label: Events
+    type: collection
+    path: content/events
+    format: yaml-frontmatter
+    exclude: [_index.md]
+    subfolders: false
+    filename:
+      template: "{fields.date}-{fields.title}.md"
+      field: false
+    operations:
+      rename: false
+      delete: false
+    view:
+      fields: [title, date, featured]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Event title
+        type: string
+        required: true
+      - name: date
+        label: Start date
+        description: Also sets the file name. Past events move to "Past events" automatically.
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: end_date
+        label: End date
+        description: Only for events that span several days. Leave empty otherwise.
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+      - name: time
+        label: Time
+        description: "For example: 9:30 am – 12:30 pm"
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: map_url
+        label: Map link
+        description: Optional Google Maps link.
+        type: string
+      - name: teachers
+        label: Teachers
+        description: One name per row.
+        type: string
+        list: true
+      - name: register_url
+        label: Registration link
+        description: Optional https:// link to the registration form.
+        type: string
+      - name: image
+        label: Event image
+        description: Optional.
+        type: image
+        options:
+          path: static/images/events
+      - name: featured
+        label: Show on homepage
+        description: Turn on to feature this event in the homepage "upcoming" box.
+        type: boolean
+        default: false
+      - name: summary
+        label: Short summary
+        description: One or two sentences for event lists and the homepage.
+        type: text
+      - name: body
+        label: Event details
+        description: Markdown text. Keep any {{< ... >}} lines exactly as they are.
+        type: code
+        options:
+          format: markdown
+
+  # 3. Events page intro (content/events/_index.md)
+  - name: events-intro
+    label: Events page intro
+    type: file
+    path: content/events/_index.md
+    format: yaml-frontmatter
+    operations:
+      delete: false
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: description
+        label: Short description
+        description: One sentence for search engines and link previews.
+        type: text
+      - name: body
+        label: Intro text
+        type: code
+        options:
+          format: markdown
+
+  # 4. Fixed site pages (content/*.md). No create, rename or delete.
+  #    menu, aliases and slug are left out on purpose; settings.content.merge keeps them.
+  - name: pages
+    label: Pages
+    type: collection
+    path: content
+    format: yaml-frontmatter
+    exclude: [_index.md]
+    subfolders: false
+    operations:
+      create: false
+      rename: false
+      delete: false
+    view:
+      fields: [title]
+      primary: title
+      sort: [title]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: description
+        label: Short description
+        description: One sentence for search engines and link previews.
+        type: text
+      - name: body
+        label: Page text
+        description: Markdown text. Keep any {{< ... >}} lines exactly as they are. They insert the groups, people lists and buttons.
+        type: code
+        options:
+          format: markdown
+
+  # 5. Homepage (content/_index.md + data/home.yaml)
+  - name: home
+    label: "Homepage: welcome text"
+    type: file
+    path: content/_index.md
+    format: yaml-frontmatter
+    operations:
+      delete: false
+    fields:
+      - name: title
+        label: Site title
+        type: string
+        required: true
+      - name: tagline
+        label: Tagline
+        description: Short line under the site name.
+        type: string
+      - name: hero_image
+        label: Banner image
+        type: image
+      - name: body
+        label: Welcome text
+        type: code
+        options:
+          format: markdown
+
+  - name: home-cards
+    label: "Homepage: feature cards"
+    type: file
+    path: data/home.yaml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+      - name: cards
+        label: Feature cards
+        description: The 3–4 cards under the welcome text.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Card title
+            type: string
+            required: true
+          - name: text
+            label: Card text
+            type: text
+          - name: link
+            label: Link
+            description: "A site path such as /events/ or a full https:// link."
+            type: string
+          - name: image
+            label: Card image
+            description: Optional.
+            type: image
+
+  # 6. Teachers and board (data/people.yaml)
+  - name: people
+    label: Teachers & board
+    type: file
+    path: data/people.yaml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+      - name: teachers
+        label: Teachers
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} ({role})"
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: role
+            label: Role
+            type: string
+          - name: photo
+            label: Photo
+            type: image
+            options:
+              path: static/images/people
+          - name: bio
+            label: Biography
+            description: Markdown text. A blank line starts a new paragraph.
+            type: text
+      - name: board
+        label: Board of directors
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} ({role})"
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: role
+            label: Role
+            type: string
+          - name: photo
+            label: Photo
+            type: image
+            options:
+              path: static/images/people
+          - name: bio
+            label: Biography
+            description: Markdown text. A blank line starts a new paragraph.
+            type: text
