@@ -347,3 +347,56 @@ content:
             label: Biography
             description: Markdown text. A blank line starts a new paragraph.
             type: text
+
+  # 7. Design E "First Light" only: the homepage "Your first visit" block and the blessing
+  #    before the footer (data/design-e.yaml). Other designs ignore this file.
+  - name: design-e
+    label: "Homepage: first visit & blessing (design E)"
+    type: file
+    path: data/design-e.yaml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+      - name: first_visit
+        label: Your first visit
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            required: true
+          - name: lede
+            label: Lead sentence
+            type: text
+          - name: points
+            label: Points
+            description: Three or four short reassurances for a first-time visitor.
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - name: title
+                label: Title
+                type: string
+                required: true
+              - name: text
+                label: Text
+                type: text
+          - name: button
+            label: Button label
+            description: Links to the Meditation Groups page.
+            type: string
+      - name: blessing
+        label: Blessing before the footer
+        type: object
+        fields:
+          - name: text
+            label: Text
+            type: text
+            required: true
+          - name: source
+            label: Source
+            type: string
