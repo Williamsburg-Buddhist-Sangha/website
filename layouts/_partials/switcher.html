@@ -1,4 +1,4 @@
-{{- if site.Params.preview -}}
+{{- if and site.Params.preview site.Params.switcher -}}
 {{- $ds := partial "designs.html" . -}}
 {{- if gt (len $ds.list) 1 -}}
 <div class="design-switcher" role="group" aria-labelledby="design-switcher-label" data-switcher>

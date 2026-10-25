@@ -7,6 +7,8 @@ buildFuture = true
 [params]
   # Preview build: adds noindex and the design switcher. Set false at cutover.
   preview = true
+  # Design switcher pill + ?design= / stored choice. false = every visitor sees defaultDesign.
+  switcher = false
   defaultDesign = 'a'
   description = 'The Williamsburg Buddhist Sangha offers meditation and study groups, special events, classes and a community for practice and learning in Williamsburg, Virginia.'
   logo = '/images/logo.png'

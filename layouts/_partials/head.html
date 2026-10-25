@@ -35,7 +35,7 @@ h.className+=" js";
 function ok(x){return ids.indexOf(x)>-1}
 function font(x){var u=F[x];if(!u||document.getElementById("wbs-font-"+x))return;var l=document.createElement("link");l.rel="stylesheet";l.setAttribute("href",u);l.id="wbs-font-"+x;document.head.appendChild(l)}
 window.wbsSetDesign=function(x,save){if(!ok(x))return;h.setAttribute("data-design",x);font(x);if(save){try{localStorage.setItem(k,x)}catch(e){}}};
-{{- if site.Params.preview }}
+{{- if and site.Params.preview site.Params.switcher }}
 try{var s=localStorage.getItem(k);if(ok(s))d=s}catch(e){}
 try{var q=new URLSearchParams(location.search).get("design");if(ok(q)){d=q;try{localStorage.setItem(k,q)}catch(e){}}}catch(e){}
 {{- end }}
