@@ -17,7 +17,7 @@
 
 /* Toolbar */
 #toolbar { min-height: 40px; }
-#toolbar .tb-list { float: right !important; text-align: right !important; margin: 0; list-style: none; }
+#toolbar .tb-list { float: right !important; text-align: right !important; margin: 0; }
 #toolbar .tb-list li { float: left; font-size: 16px; display: inline; margin: 0; padding: 0; text-align: center; position: relative; }
 #toolbar .tb-list li a { color: #fff; margin: 0; padding: 0; text-decoration: none; display: inline-block; background: none; }
 #toolbar .tb-list .mt { padding-top: 0; }
@@ -54,7 +54,7 @@
 /* Main menu */
 #branding nav { float: right; }
 .main-navigation { margin: 0 auto; min-height: 45px; position: relative; }
-ul.nav-menu { margin: 0; padding: 15px 0 0 0; text-align: right; list-style: none; }
+ul.nav-menu { margin: 0; padding: 15px 0 0 0; text-align: right; }
 .nav-menu li { display: inline-block; position: relative; }
 /* = the space character between production's inline-block items (Arimo 14px: 0.2778em) */
 ul.nav-menu > li + li { margin-left: 0.27783em; }
@@ -65,7 +65,7 @@ ul.nav-menu > li + li { margin-left: 0.27783em; }
 .nav-menu .current_page_item > a, .nav-menu .current-menu-item > a, .nav-menu .current-menu-ancestor > a { color: #005a72; }
 .nav-menu .sub-menu {
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); background: #fff; display: none; padding: 0;
-	position: absolute; left: -25px; color: #3b3b3d; z-index: 99999; text-align: left; list-style: none;
+	position: absolute; left: -25px; color: #3b3b3d; z-index: 99999; text-align: left;
 }
 ul.nav-menu ul a { color: #3b3b3d; margin: 0; width: 160px; border-bottom: 1px solid #ccc; }
 ul.nav-menu ul a:hover, ul.nav-menu ul a:focus-visible { color: #fff; border-bottom: 1px solid #ccc; animation: classic-fade-in 1s both; }
