@@ -42,8 +42,9 @@ Page, event, events-intro and homepage bodies are edited in Pages CMS with the W
 `rich-text` editor (TipTap). On every save of an edited body it re-writes the whole body as
 Markdown. Keep bodies to what that editor can hold, so a save does not change the page:
 
-- Paragraphs, headings (`##`, `###`, `####`), **bold**, *italic*, links, bulleted and numbered
-  lists, block quotes, horizontal rules, images.
+- Paragraphs, headings (`##`, `###`, `####`), **bold**, *italic*, ~~strike~~, links, bulleted
+  and numbered lists, block quotes, horizontal rules, images. The editor writes underline as
+  `++text++`; Hugo renders it as `<ins>` (`hugo.toml` goldmark extras `insert`).
 - Line break inside a paragraph: two spaces at the end of the line (the editor writes this form;
   `\` at the end of a line also works in Hugo but the editor converts it).
 - Links as `[text](url)`. Put bold/italic outside the link: `***[Title](url)***`, not
@@ -54,7 +55,7 @@ Two block rules (`layouts/_partials/content.html`) replace the old shortcodes:
 
 | Write in the body | Renders as |
 |---|---|
-| a link alone in its own paragraph: `[Donate Now](https://…)` | a primary button (`a.btn.btn--primary`), where the paragraph was |
+| a link alone in its own paragraph: `[Donate Now](https://…)` (bold/italic allowed) | a primary button (`a.btn.btn--primary`), where the paragraph was |
 | an image alone in its own paragraph: `![Alt text](/images/x.jpg)` | `<figure><img alt="Alt text" …></figure>` (no caption) |
 
 A link with other text in the same paragraph stays a normal link. Links in list items, quotes

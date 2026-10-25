@@ -45,4 +45,8 @@ buildFuture = true
 [markup.goldmark.renderer]
   unsafe = true
 
+# The Pages CMS rich-text editor saves underlined text as ++text++. Render it as <ins>.
+[markup.goldmark.extensions.extras.insert]
+  enable = true
+
 [taxonomies]
